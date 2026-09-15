@@ -264,7 +264,12 @@ class TestRAGAnythingIntegration:
 
         config = RAGAnythingConfig()
         rag = RAGAnything(config=config)
-        rag.lightrag = FakeLightRAG()
+
+        async def fake_ensure():
+            rag.lightrag = FakeLightRAG()
+            return {"success": True}
+
+        monkeypatch.setattr(rag, "_ensure_lightrag_initialized", fake_ensure)
 
         cb = RecordingCallback()
         rag.callback_manager.register(cb)

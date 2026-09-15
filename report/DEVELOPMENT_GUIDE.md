@@ -1,6 +1,6 @@
 # 轻量级多模态 RAG 开发文档
 
-> 本文描述计划建设的应用层。标记为“计划”的模块尚未实现，不能视为当前仓库已有能力。
+> 本文描述轻量级多模态 RAG 应用层。阶段 0～3 已实现，Streamlit 和完整评测仍属于后续计划。
 
 ## 1. 当前基础
 
@@ -192,7 +192,7 @@ python examples/process_real_documents.py \
 
 ## 5. 配置设计
 
-计划在 `app/core/config.py` 中集中读取以下环境变量：
+`app/core/config.py` 集中读取以下环境变量：
 
 | 环境变量 | 示例 | 用途 |
 |---|---|---|
@@ -201,14 +201,17 @@ python examples/process_real_documents.py \
 | `WORKING_DIR` | `./rag_storage_app` | LightRAG 数据目录 |
 | `UPLOAD_DIR` | `./data/uploads` | 上传文件目录 |
 | `MAX_UPLOAD_MB` | `20` | 上传大小限制 |
-| `LLM_MODEL` | `gpt-4o-mini` | 文本模型 |
-| `VISION_MODEL` | `gpt-4o-mini` | 视觉模型 |
-| `LLM_BINDING_HOST` | `https://api.openai.com/v1` | OpenAI-compatible 地址 |
+| `LLM_MODEL` | `deepseek-flash` | 文本模型 |
+| `VISION_MODEL` | `deepseek-flash` | 视觉处理所用模型 |
+| `LLM_BINDING_HOST` | `https://api.deepseek.com` | OpenAI-compatible 地址 |
 | `LLM_BINDING_API_KEY` | 空 | API 密钥 |
-| `EMBEDDING_MODEL` | `text-embedding-3-small` | Embedding 模型 |
-| `EMBEDDING_DIM` | `1536` | 向量维度 |
-| `EMBEDDING_BINDING_HOST` | 同 LLM | Embedding 地址 |
-| `EMBEDDING_BINDING_API_KEY` | 同 LLM | Embedding 密钥 |
+| `EMBEDDING_MODEL` | `bge-m3` | Ollama Embedding 模型 |
+| `EMBEDDING_DIM` | `1024` | 向量维度 |
+| `EMBEDDING_BINDING_HOST` | `http://localhost:11434/v1` | Embedding 地址 |
+| `EMBEDDING_BINDING_API_KEY` | `ollama` | 本地兼容接口占位值 |
+| `PARSER_BACKEND` | `pipeline` | MinerU CPU 解析后端 |
+| `PARSER_TIMEOUT` | `900` | 单文档解析超时秒数 |
+| `MAX_QUERY_CONCURRENCY` | `2` | 查询并发上限 |
 
 规则：
 
@@ -219,21 +222,21 @@ python examples/process_real_documents.py \
 
 ## 6. 服务层设计
 
-计划新增 `KnowledgeBaseService`，职责如下：
+已实现 `KnowledgeBaseService`，职责如下：
 
 ```python
 class KnowledgeBaseService:
     async def initialize(self) -> None: ...
-    async def ingest_file(self, file_path: Path, task_id: str) -> str: ...
-    async def ingest_content_list(self, content_list: list[dict]) -> str: ...
-    async def query(self, question: str, mode: str = "mix") -> QueryResult: ...
+    async def submit_document(self, upload: UploadFile) -> DocumentTaskResponse: ...
+    def get_document(self, task_id: str) -> DocumentTaskResponse: ...
+    async def query(self, request: QueryRequest) -> QueryResponse: ...
     async def close(self) -> None: ...
 ```
 
 约束：
 
 - 全局只维护一个 RAGAnything 实例。
-- FastAPI startup/lifespan 中初始化，shutdown 时关闭。
+- FastAPI lifespan 中初始化，shutdown 时等待活动任务并关闭。
 - 路由只处理 HTTP 输入输出，不包含模型组装和 RAG 业务逻辑。
 - 服务层将底层异常转换为少量稳定的应用异常。
 - 不在多个请求中反复初始化存储。
@@ -405,7 +408,7 @@ pytest -m integration
 
 关键词命中率只能作为简易回归指标，不应表述为严格语义准确率。
 
-## 12. 本地运行方式（计划）
+## 12. 本地运行方式
 
 完成应用层后，预期命令如下：
 
@@ -416,16 +419,20 @@ conda activate raganything-dev
 # Install CPU PyTorch first so pip does not pull the CUDA runtime.
 python -m pip install "torch>=2.6,<3" torchvision \
   --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e ".[dev]"
+python -m pip install -e ".[dev,api]"
 
 cp env.example .env
 
-# The API and UI commands become available after the application phase.
 uvicorn app.main:app --reload --workers 1
-streamlit run ui/streamlit_app.py
 ```
 
-正式实现时应以最终 README 和 `pyproject.toml` 为准。
+打开 `http://127.0.0.1:8000/docs` 使用 OpenAPI 页面。真实 API 查询回归可复用阶段 2 的本地知识库：
+
+```bash
+python -m scripts.verify_phase3_api --working-dir ./rag_storage_phase2
+```
+
+Streamlit 命令将在阶段 4 实现后补充。
 
 ## 13. Git 工作流
 

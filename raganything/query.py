@@ -143,9 +143,12 @@ class QueryMixin:
         Returns:
             str: Query result
         """
-        if self.lightrag is None:
-            raise ValueError(
-                "No LightRAG instance available. Please process documents first or provide a pre-initialized LightRAG instance."
+        # Querying an existing working directory in a fresh process must
+        # initialize LightRAG just like ingestion and multimodal query paths do.
+        init_result = await self._ensure_lightrag_initialized()
+        if not init_result or not init_result.get("success"):
+            raise RuntimeError(
+                f"LightRAG initialization failed: {(init_result or {}).get('error', 'unknown error')}"
             )
 
         # Check if VLM enhanced query should be used
