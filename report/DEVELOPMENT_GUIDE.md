@@ -360,10 +360,17 @@ pytest -m integration
 完成应用层后，预期命令如下：
 
 ```bash
-python3.11 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e ".[app]"
-cp .env.example .env
+conda env create --file environment.yml
+conda activate raganything-dev
+
+# Install CPU PyTorch first so pip does not pull the CUDA runtime.
+python -m pip install "torch>=2.6,<3" torchvision \
+  --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e ".[dev]"
+
+cp env.example .env
+
+# The API and UI commands become available after the application phase.
 uvicorn app.main:app --reload --workers 1
 streamlit run ui/streamlit_app.py
 ```
