@@ -113,6 +113,25 @@ def _required_env(name: str) -> str:
     return value
 
 
+def normalize_completion_kwargs(
+    kwargs: dict[str, Any], base_url: str
+) -> dict[str, Any]:
+    """Translate LightRAG structured output hints for DeepSeek Chat Completions."""
+    normalized = dict(kwargs)
+    if "api.deepseek.com" not in base_url.lower():
+        return normalized
+
+    keyword_extraction = normalized.pop("keyword_extraction", False)
+    response_format = normalized.get("response_format")
+    if keyword_extraction or (
+        response_format is not None and not isinstance(response_format, dict)
+    ):
+        # DeepSeek Chat Completions supports json_object, but not the Pydantic
+        # model class accepted by OpenAI's beta parse helper.
+        normalized["response_format"] = {"type": "json_object"}
+    return normalized
+
+
 def build_rag(working_dir: Path) -> RAGAnything:
     """Create RAGAnything using one OpenAI-compatible endpoint configuration."""
     llm_api_key = _required_env("LLM_BINDING_API_KEY")
@@ -130,6 +149,7 @@ def build_rag(working_dir: Path) -> RAGAnything:
         history_messages: list[dict[str, Any]] | None = None,
         **kwargs: Any,
     ) -> str:
+        kwargs = normalize_completion_kwargs(kwargs, llm_base_url)
         return await openai_complete_if_cache(
             model=llm_model,
             prompt=prompt,
@@ -148,6 +168,7 @@ def build_rag(working_dir: Path) -> RAGAnything:
         messages: list[dict[str, Any]] | None = None,
         **kwargs: Any,
     ) -> str:
+        kwargs = normalize_completion_kwargs(kwargs, llm_base_url)
         if messages:
             return await openai_complete_if_cache(
                 model=vision_model,
@@ -231,7 +252,12 @@ async def run_pipeline(
         )
         for case in FIXED_QUESTIONS:
             query_started_at = time.perf_counter()
-            answer = await rag.aquery(case["question"], mode="mix", vlm_enhanced=False)
+            answer = await rag.aquery(
+                case["question"],
+                mode="mix",
+                vlm_enhanced=False,
+                enable_rerank=False,
+            )
             if not isinstance(answer, str) or not answer.strip():
                 raise RuntimeError(f"query {case['id']} returned an empty answer")
             missing_keywords = [

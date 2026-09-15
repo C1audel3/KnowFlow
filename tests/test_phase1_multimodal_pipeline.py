@@ -10,6 +10,7 @@ from examples.simple_multimodal_rag import (
     FIXED_QUESTIONS,
     build_rag,
     load_content_list,
+    normalize_completion_kwargs,
     run_pipeline,
     validate_content_list,
 )
@@ -88,6 +89,21 @@ def test_rag_builder_rejects_missing_credentials(monkeypatch, tmp_path):
         build_rag(tmp_path)
 
 
+def test_deepseek_keyword_extraction_uses_supported_json_mode():
+    normalized = normalize_completion_kwargs(
+        {"keyword_extraction": True}, "https://api.deepseek.com"
+    )
+
+    assert "keyword_extraction" not in normalized
+    assert normalized["response_format"] == {"type": "json_object"}
+
+
+def test_other_providers_keep_structured_output_options():
+    options = {"keyword_extraction": True, "temperature": 0}
+
+    assert normalize_completion_kwargs(options, "https://api.openai.com/v1") == options
+
+
 @pytest.mark.asyncio
 async def test_pipeline_inserts_and_queries_all_modalities_in_mix_mode():
     rag = FakeRAG()
@@ -109,6 +125,7 @@ async def test_pipeline_inserts_and_queries_all_modalities_in_mix_mode():
     assert len(rag.query_calls) == 4
     assert all(options["mode"] == "mix" for _, options in rag.query_calls)
     assert all(options["vlm_enhanced"] is False for _, options in rag.query_calls)
+    assert all(options["enable_rerank"] is False for _, options in rag.query_calls)
     assert rag.finalize_calls == 1
 
 

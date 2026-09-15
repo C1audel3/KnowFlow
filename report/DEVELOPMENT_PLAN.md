@@ -92,7 +92,7 @@ RAG-Anything/
 
 阶段产物与完整验证记录见 [`PHASE_0_BASELINE.md`](./PHASE_0_BASELINE.md)。
 
-### 阶段 1：最小多模态闭环（代码完成，2026-09-15）
+### 阶段 1：最小多模态闭环（已完成，2026-09-15）
 
 任务：
 
@@ -109,7 +109,7 @@ RAG-Anything/
 - [x] 表格事实问题校验值为 `150`。
 - [x] 异常路径始终调用 `finalize_storages()`。
 - [x] 使用稳定文档 ID 完成重复运行测试。
-- [ ] 使用真实 OpenAI-compatible 服务执行在线验收；当前未配置 API Key。
+- [x] 使用 DeepSeek V4.1 Flash 与本地 `bge-m3` 完成真实在线验收。
 
 阶段产物与验证边界见 [`PHASE_1_RESULT.md`](./PHASE_1_RESULT.md)。
 
