@@ -68,8 +68,8 @@ lightrag-dev/
 gui/
 tiktoken_cache/
 
-# unit-test files
-test_*
+# Ad-hoc unit-test files in the repository root
+/test_*
 
 # Cline files
 memory-bank/

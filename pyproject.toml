@@ -92,3 +92,4 @@ target-version = "py310"
 testpaths = ["tests"]
 python_files = ["test*.py"]
 norecursedirs = ["examples"]
+pythonpath = ["."]

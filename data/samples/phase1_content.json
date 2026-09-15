@@ -1,0 +1,35 @@
+[
+  {
+    "type": "text",
+    "text": "轻量级多模态知识库的项目代号是 Aurora。首版目标是用尽量少的组件完成可演示、可测试的入库与问答闭环。",
+    "page_idx": 0
+  },
+  {
+    "type": "image",
+    "img_path": "../../assets/rag_anything_framework.png",
+    "image_caption": [
+      "RAG-Anything 架构图展示了文档解析、多模态内容分析、知识图谱构建和检索问答流程。"
+    ],
+    "image_footnote": [
+      "阶段 1 复用仓库自带图片，避免依赖网络下载测试资源。"
+    ],
+    "page_idx": 1
+  },
+  {
+    "type": "table",
+    "table_body": "| 季度 | 文档数量 | 平均处理时间 |\n|---|---:|---:|\n| Q1 | 120 | 18 秒 |\n| Q2 | 150 | 14 秒 |",
+    "table_caption": [
+      "Aurora 知识库试运行统计"
+    ],
+    "table_footnote": [
+      "Q2 优化后处理速度提升。"
+    ],
+    "page_idx": 2
+  },
+  {
+    "type": "equation",
+    "latex": "F_1 = 2 \\cdot \\frac{P \\cdot R}{P + R}",
+    "text": "F1 分数是精确率 P 与召回率 R 的调和平均数。",
+    "page_idx": 3
+  }
+]

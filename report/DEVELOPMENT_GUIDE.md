@@ -78,7 +78,30 @@
 
 该路径用于开发早期排除 MinerU、LibreOffice 和真实文档质量的影响。
 
-### 3.3 查询
+### 3.3 阶段 1 可运行样例
+
+先验证本地样例结构，不调用模型 API：
+
+```bash
+conda activate raganything-dev
+python examples/simple_multimodal_rag.py --validate-only
+```
+
+在 `.env` 中配置 LLM、视觉模型和 Embedding 服务后，执行真实入库与四类固定问题：
+
+```bash
+python examples/simple_multimodal_rag.py
+```
+
+使用同一文档 ID 连续执行两次以手工检查幂等性：
+
+```bash
+python examples/simple_multimodal_rag.py --repeat 2
+```
+
+脚本只使用公开的 `insert_content_list()`、`aquery()` 和 `finalize_storages()` 接口。每个问题采用 `mix` 模式，输出答案、关键词检查结果和耗时；无论成功或异常都会释放存储资源。
+
+### 3.4 查询
 
 ```text
 用户问题
