@@ -1347,7 +1347,11 @@ class MineruParser(Parser):
             stdout_thread.join(timeout=5)
             stderr_thread.join(timeout=5)
 
-            if return_code != 0 or error_lines:
+            # MinerU and its download dependencies occasionally emit transient
+            # retry messages containing "error" on stderr, then recover and
+            # exit successfully. Treat the process return code as authoritative;
+            # downstream output validation will still reject missing artifacts.
+            if return_code != 0:
                 cls.logger.info("[MinerU] Command executed failed")
                 hint = _diagnose_mineru_failure(error_lines)
                 if hint:

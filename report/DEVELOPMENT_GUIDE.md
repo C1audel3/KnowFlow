@@ -101,7 +101,34 @@ python examples/simple_multimodal_rag.py --repeat 2
 
 脚本只使用公开的 `insert_content_list()`、`aquery()` 和 `finalize_storages()` 接口。每个问题采用 `mix` 模式，输出答案、关键词检查结果和耗时；无论成功或异常都会释放存储资源。
 
-### 3.4 查询
+### 3.4 阶段 2 真实文档样例
+
+阶段 2 提供可重复生成的小型 PDF、Markdown 和 PNG：
+
+```bash
+python scripts/generate_phase2_samples.py
+python examples/process_real_documents.py --validate-only
+```
+
+真实运行前应确保 `.env` 已配置、Ollama 正在运行且存在 `bge-m3`：
+
+```bash
+ollama serve
+ollama pull bge-m3
+python examples/process_real_documents.py
+```
+
+脚本调用公开的 `process_document_complete()` 完成解析和入库，并再次调用 `parse_document()` 的缓存结果输出内容类型、文档 ID 和各阶段耗时。PDF 与 PNG 默认使用适合 CPU 环境的 MinerU `pipeline` 后端，Markdown 使用直接解析。首次解析可能下载 MinerU 模型，所需时间不计入稳定性能基线。
+
+默认输出目录为 `output_phase2/`，知识库存储为 `rag_storage_phase2/`。两者均为运行时产物，不提交到 Git。需要隔离运行时可指定：
+
+```bash
+python examples/process_real_documents.py \
+  --working-dir ./rag_storage_phase2_test \
+  --output-dir ./output_phase2_test
+```
+
+### 3.5 查询
 
 ```text
 用户问题

@@ -142,3 +142,14 @@ def test_unrelated_stderr_still_raises_without_a_hint(mock_mkdir, mock_popen):
         MineruParser()._run_mineru_command("book.pdf", "out")
 
     assert excinfo.value.hint is None
+
+
+@patch("subprocess.Popen")
+@patch("pathlib.Path.mkdir")
+def test_transient_stderr_error_does_not_override_success(mock_mkdir, mock_popen):
+    """A recovered model-download retry must not turn exit code 0 into failure."""
+    mock_popen.return_value = _fake_mineru_process(
+        ["ERROR: model download retry 1/5"], return_code=0
+    )
+
+    MineruParser()._run_mineru_command("book.pdf", "out")
