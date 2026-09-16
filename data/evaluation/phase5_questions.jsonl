@@ -1,0 +1,16 @@
+{"id":"text-release","question":"Atlas 项目计划在哪个季度发布？","type":"text","expected_keywords":["2027","Q3"]}
+{"id":"text-project","question":"阶段二报告描述的是哪个项目？","type":"text","expected_keywords":["Atlas"]}
+{"id":"text-owner","question":"Atlas 知识库试点的负责人是谁？","type":"text","expected_keywords":["Lin Qiao"]}
+{"id":"text-tag","question":"Markdown 运维记录中的验收标签是什么？","type":"text","expected_keywords":["MD-READY-27"]}
+{"id":"table-latency","question":"试验结果中 Sensor-B 的延迟是多少？","type":"table","expected_keywords":["18","ms"]}
+{"id":"table-accuracy","question":"Sensor-B 的准确率是多少？","type":"table","expected_keywords":["94%"]}
+{"id":"table-fastest","question":"三个传感器中哪个传感器的延迟最低？","type":"table","expected_keywords":["Sensor-B","18"]}
+{"id":"image-gateway","question":"架构图中的视觉网关叫什么？","type":"image","expected_keywords":["ORION"]}
+{"id":"image-code","question":"独立图片中的 IMAGE CODE 是什么？","type":"image","expected_keywords":["PIXEL-42"]}
+{"id":"image-destination","question":"ATLAS 多模态流程图最右侧的目标节点是什么？","type":"image","expected_any":["KNOWLEDGE GRAPH","知识图谱"]}
+{"id":"equation-inputs","question":"报告中的 F1 公式综合哪两个指标？","type":"equation","expected_keywords":["精确率","召回率"]}
+{"id":"equation-mean","question":"F1 分数使用哪一种平均数？","type":"equation","expected_any":["调和平均","harmonic mean"]}
+{"id":"cross-owner-release","question":"请同时给出 Atlas 试点负责人和目标发布季度。","type":"cross_document","expected_keywords":["Lin Qiao","2027","Q3"]}
+{"id":"cross-gateway-code","question":"请同时给出架构图中的视觉网关名称和图片代码。","type":"cross_document","expected_keywords":["ORION","PIXEL-42"]}
+{"id":"refusal-sensor-d","question":"Sensor-D 的延迟是多少？如果资料没有提供，请明确说明。","type":"refusal","expected_any":["未提供","没有提供","无法确定","不知道","无法得知"],"forbidden_keywords":["Sensor-D 的延迟为 18","Sensor-D 的延迟是 18","Sensor-D 的延迟为 24","Sensor-D 的延迟是 24","Sensor-D 的延迟为 31","Sensor-D 的延迟是 31"]}
+{"id":"refusal-budget","question":"Project Atlas 的预算金额是多少？如果资料没有提供，请明确说明。","type":"refusal","expected_any":["未提供","没有提供","无法确定","不知道","无法得知"],"forbidden_keywords":["美元","人民币","万元"]}

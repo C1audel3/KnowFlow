@@ -1,6 +1,6 @@
 # 轻量级多模态 RAG 开发文档
 
-> 本文描述轻量级多模态 RAG 应用层。阶段 0～3 已实现，Streamlit 和完整评测仍属于后续计划。
+> 本文描述轻量级多模态 RAG 应用层。阶段 0～5 已实现，当前系统已具备 API、Streamlit 页面和固定评测闭环。
 
 ## 1. 当前基础
 
@@ -385,17 +385,17 @@ await rag.finalize_storages()
 
 ### 11.2 真实模型测试显式开启
 
-真实模型测试使用独立标记，例如：
+真实模型测试使用独立标记和显式开关：
 
 ```bash
-pytest -m integration
+RUN_REAL_INTEGRATION=1 python -m pytest -m integration
 ```
 
-未设置 API Key 时自动跳过，避免 CI 意外产生费用。
+未设置开关、API Key、阶段 2 知识库或 Ollama 不可用时跳过或给出明确失败，避免 CI 意外产生费用。
 
 ### 11.3 固定评测集
 
-建议使用 JSONL：
+固定问题集位于 `data/evaluation/phase5_questions.jsonl`，使用 JSONL：
 
 ```json
 {"id":"table-01","question":"准确率是多少？","expected_keywords":["92%"],"type":"table"}
@@ -411,6 +411,17 @@ pytest -m integration
 - 失败问题及原始答案。
 
 关键词命中率只能作为简易回归指标，不应表述为严格语义准确率。
+
+API 使用阶段 2 知识库启动后，一条命令执行两轮真实评测：
+
+```bash
+python -m scripts.evaluate \
+  --api-url http://127.0.0.1:8000 \
+  --rounds 2 \
+  --fail-on-check
+```
+
+默认结果写入 `report/artifacts/phase5_results.json`。文件包含数据集 SHA-256、模型名、运行参数、逐题答案、错误码、来源、后端耗时和端到端耗时，但不写入 API Key 或 API 地址。`--fail-on-check` 在任一规则失败时返回非零退出码，适合回归检查。
 
 ## 12. 本地运行方式
 

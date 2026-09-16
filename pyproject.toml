@@ -106,4 +106,7 @@ target-version = "py310"
 testpaths = ["tests"]
 python_files = ["test*.py"]
 norecursedirs = ["examples"]
+markers = [
+    "integration: opt-in tests that call configured model services",
+]
 pythonpath = ["."]
