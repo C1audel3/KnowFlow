@@ -19,7 +19,7 @@
 
 ```text
 ┌──────────────────────┐
-│ Streamlit Demo UI    │
+│ Streamlit Demo UI    │  ← 阶段 4 已实现
 └──────────┬───────────┘
            │ HTTP
 ┌──────────▼───────────┐
@@ -212,6 +212,10 @@ python examples/process_real_documents.py \
 | `PARSER_BACKEND` | `pipeline` | MinerU CPU 解析后端 |
 | `PARSER_TIMEOUT` | `900` | 单文档解析超时秒数 |
 | `MAX_QUERY_CONCURRENCY` | `2` | 查询并发上限 |
+| `API_BASE_URL` | `http://127.0.0.1:8000` | Streamlit 连接的 API |
+| `UI_REQUEST_TIMEOUT` | `30` | 单次 UI 请求超时秒数 |
+| `UI_POLL_INTERVAL` | `1` | 文档状态轮询间隔秒数 |
+| `UI_TASK_TIMEOUT` | `900` | 文档任务等待上限秒数 |
 
 规则：
 
@@ -419,20 +423,29 @@ conda activate raganything-dev
 # Install CPU PyTorch first so pip does not pull the CUDA runtime.
 python -m pip install "torch>=2.6,<3" torchvision \
   --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e ".[dev,api]"
+python -m pip install -e ".[dev,api,ui]"
 
 cp env.example .env
 
 uvicorn app.main:app --reload --workers 1
+
+# 终端 2
+streamlit run ui/streamlit_app.py
 ```
 
-打开 `http://127.0.0.1:8000/docs` 使用 OpenAPI 页面。真实 API 查询回归可复用阶段 2 的本地知识库：
+打开 `http://127.0.0.1:8000/docs` 使用 OpenAPI 页面，打开 `http://127.0.0.1:8501` 使用演示界面。真实 API 查询回归可复用阶段 2 的本地知识库：
 
 ```bash
 python -m scripts.verify_phase3_api --working-dir ./rag_storage_phase2
 ```
 
-Streamlit 命令将在阶段 4 实现后补充。
+在 API 已使用阶段 2 知识库启动时，可自动操作 Streamlit 页面完成真实问答验收：
+
+```bash
+python -m scripts.verify_phase4_ui --api-url http://127.0.0.1:8000
+```
+
+Streamlit 仅通过 HTTP 调用后端，不加载 RAGAnything、模型或本地存储。页面状态和问答历史保存在当前浏览器会话中，刷新或服务重启后不保证恢复。
 
 ## 13. Git 工作流
 
