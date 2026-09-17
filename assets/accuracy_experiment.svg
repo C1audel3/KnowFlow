@@ -1,40 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
-  <title id="title">KnowFlow RAG accuracy experiment</title>
-  <desc id="desc">KnowFlow RAG achieved 100 percent closed-set factual accuracy versus 25 percent for the same model without RAG.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">KnowFlow multi-metric RAG experiment</title>
+  <desc id="desc">Two repeated rounds show 100 percent KnowFlow RAG accuracy versus 25 percent without RAG, with stability, latency, and token metrics.</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071426"/><stop offset="1" stop-color="#172554"/></linearGradient>
     <linearGradient id="rag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#0284c7"/></linearGradient>
     <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbbf24"/><stop offset="1" stop-color="#d97706"/></linearGradient>
     <style>
       .title{font:700 34px system-ui,sans-serif;fill:#f8fafc}.subtitle{font:16px system-ui,sans-serif;fill:#94a3b8}
-      .axis{stroke:#64748b;stroke-width:1}.grid{stroke:#334155;stroke-width:1;stroke-dasharray:5 6}.tick{font:13px system-ui,sans-serif;fill:#94a3b8}
+      .axis{stroke:#64748b}.grid{stroke:#334155;stroke-dasharray:5 6}.tick{font:13px system-ui,sans-serif;fill:#94a3b8}
       .label{font:600 15px system-ui,sans-serif;fill:#e2e8f0}.value{font:700 17px system-ui,sans-serif;fill:#f8fafc}.legend{font:15px system-ui,sans-serif;fill:#cbd5e1}
-      .note{font:14px system-ui,sans-serif;fill:#bae6fd}.metric{font:700 24px system-ui,sans-serif;fill:#f8fafc}
+      .cardTitle{font:14px system-ui,sans-serif;fill:#94a3b8}.cardValue{font:700 23px system-ui,sans-serif;fill:#f8fafc}.cardNote{font:13px system-ui,sans-serif;fill:#bae6fd}
     </style>
   </defs>
-  <rect width="1200" height="720" rx="28" fill="url(#background)"/>
-  <text x="60" y="62" class="title">KnowFlow 闭集事实准确率实验</text>
-  <text x="60" y="94" class="subtitle">同一 DeepSeek 模型 · 温度 0 · 16 个预注册问题 · RAG vs 无知识库基线</text>
+  <rect width="1200" height="900" rx="28" fill="url(#background)"/>
+  <text x="60" y="62" class="title">KnowFlow 多指标 RAG 对照实验</text>
+  <text x="60" y="94" class="subtitle">同一 DeepSeek 模型 · 16 题 × 2 轮 · 64 个真实系统回答 · 温度 0</text>
   <rect x="865" y="36" width="275" height="76" rx="16" fill="#0c4a6e" stroke="#38bdf8"/>
-  <text x="1002" y="69" text-anchor="middle" class="subtitle">准确率提升</text><text x="1002" y="98" text-anchor="middle" class="metric">+75 个百分点</text>
+  <text x="1002" y="69" text-anchor="middle" class="subtitle">准确率提升</text><text x="1002" y="98" text-anchor="middle" class="cardValue">+75 个百分点</text>
 
-  <line x1="95" y1="555" x2="1105" y2="555" class="axis"/>
-  <line x1="95" y1="155" x2="95" y2="555" class="axis"/>
-  <line x1="95" y1="455" x2="1105" y2="455" class="grid"/><line x1="95" y1="355" x2="1105" y2="355" class="grid"/>
-  <line x1="95" y1="255" x2="1105" y2="255" class="grid"/><line x1="95" y1="155" x2="1105" y2="155" class="grid"/>
-  <text x="78" y="560" text-anchor="end" class="tick">0%</text><text x="78" y="460" text-anchor="end" class="tick">25%</text>
-  <text x="78" y="360" text-anchor="end" class="tick">50%</text><text x="78" y="260" text-anchor="end" class="tick">75%</text><text x="78" y="160" text-anchor="end" class="tick">100%</text>
+  <line x1="95" y1="535" x2="1105" y2="535" class="axis"/><line x1="95" y1="145" x2="95" y2="535" class="axis"/>
+  <line x1="95" y1="437.5" x2="1105" y2="437.5" class="grid"/><line x1="95" y1="340" x2="1105" y2="340" class="grid"/>
+  <line x1="95" y1="242.5" x2="1105" y2="242.5" class="grid"/><line x1="95" y1="145" x2="1105" y2="145" class="grid"/>
+  <text x="78" y="540" text-anchor="end" class="tick">0%</text><text x="78" y="442" text-anchor="end" class="tick">25%</text>
+  <text x="78" y="345" text-anchor="end" class="tick">50%</text><text x="78" y="247" text-anchor="end" class="tick">75%</text><text x="78" y="150" text-anchor="end" class="tick">100%</text>
 
-  <rect x="135" y="155" width="58" height="400" rx="8" fill="url(#rag)"/><rect x="199" y="455" width="58" height="100" rx="8" fill="url(#base)"/>
-  <text x="164" y="143" text-anchor="middle" class="value">100%</text><text x="228" y="443" text-anchor="middle" class="value">25%</text><text x="196" y="585" text-anchor="middle" class="label">整体</text>
-  <rect x="285" y="155" width="42" height="400" rx="7" fill="url(#rag)"/><text x="306" y="143" text-anchor="middle" class="value">100</text><text x="342" y="585" text-anchor="middle" class="label">文本</text>
-  <rect x="405" y="155" width="42" height="400" rx="7" fill="url(#rag)"/><text x="426" y="143" text-anchor="middle" class="value">100</text><text x="462" y="585" text-anchor="middle" class="label">表格</text>
-  <rect x="525" y="155" width="42" height="400" rx="7" fill="url(#rag)"/><text x="546" y="143" text-anchor="middle" class="value">100</text><text x="582" y="585" text-anchor="middle" class="label">图片</text>
-  <rect x="645" y="155" width="42" height="400" rx="7" fill="url(#rag)"/><rect x="693" y="155" width="42" height="400" rx="7" fill="url(#base)"/><text x="690" y="585" text-anchor="middle" class="label">公式</text>
-  <rect x="795" y="155" width="42" height="400" rx="7" fill="url(#rag)"/><text x="816" y="143" text-anchor="middle" class="value">100</text><text x="852" y="585" text-anchor="middle" class="label">跨文档</text>
-  <rect x="945" y="155" width="42" height="400" rx="7" fill="url(#rag)"/><rect x="993" y="155" width="42" height="400" rx="7" fill="url(#base)"/><text x="990" y="585" text-anchor="middle" class="label">拒答</text>
+  <rect x="130" y="145" width="54" height="390" rx="8" fill="url(#rag)"/><rect x="190" y="437.5" width="54" height="97.5" rx="8" fill="url(#base)"/>
+  <text x="157" y="133" text-anchor="middle" class="value">100%</text><text x="217" y="425" text-anchor="middle" class="value">25%</text><text x="187" y="568" text-anchor="middle" class="label">整体</text>
+  <rect x="280" y="145" width="40" height="390" rx="7" fill="url(#rag)"/><text x="330" y="568" text-anchor="middle" class="label">文本</text>
+  <rect x="400" y="145" width="40" height="390" rx="7" fill="url(#rag)"/><text x="450" y="568" text-anchor="middle" class="label">表格</text>
+  <rect x="520" y="145" width="40" height="390" rx="7" fill="url(#rag)"/><text x="570" y="568" text-anchor="middle" class="label">图片</text>
+  <rect x="640" y="145" width="40" height="390" rx="7" fill="url(#rag)"/><rect x="686" y="145" width="40" height="390" rx="7" fill="url(#base)"/><text x="683" y="568" text-anchor="middle" class="label">公式</text>
+  <rect x="790" y="145" width="40" height="390" rx="7" fill="url(#rag)"/><text x="840" y="568" text-anchor="middle" class="label">跨文档</text>
+  <rect x="940" y="145" width="40" height="390" rx="7" fill="url(#rag)"/><rect x="986" y="145" width="40" height="390" rx="7" fill="url(#base)"/><text x="983" y="568" text-anchor="middle" class="label">拒答</text>
+  <rect x="382" y="600" width="20" height="20" rx="4" fill="url(#rag)"/><text x="414" y="616" class="legend">KnowFlow RAG：32/32</text>
+  <rect x="610" y="600" width="20" height="20" rx="4" fill="url(#base)"/><text x="642" y="616" class="legend">无 RAG：8/32</text>
 
-  <rect x="340" y="630" width="20" height="20" rx="4" fill="url(#rag)"/><text x="372" y="646" class="legend">KnowFlow RAG：16/16</text>
-  <rect x="565" y="630" width="20" height="20" rx="4" fill="url(#base)"/><text x="597" y="646" class="legend">无 RAG 基线：4/16</text>
-  <text x="600" y="688" text-anchor="middle" class="note">Wilson 95% CI：RAG 80.64%–100% · 基线 10.18%–49.50% · McNemar p=0.000488</text>
+  <rect x="60" y="660" width="250" height="132" rx="16" fill="#102a43" stroke="#38bdf8"/>
+  <text x="185" y="691" text-anchor="middle" class="cardTitle">可回答题准确率</text><text x="185" y="728" text-anchor="middle" class="cardValue">100% vs 14.29%</text><text x="185" y="758" text-anchor="middle" class="cardNote">28/28 vs 4/28</text>
+  <rect x="337" y="660" width="250" height="132" rx="16" fill="#102a43" stroke="#38bdf8"/>
+  <text x="462" y="691" text-anchor="middle" class="cardTitle">跨轮正确性一致率</text><text x="462" y="728" text-anchor="middle" class="cardValue">100% / 100%</text><text x="462" y="758" text-anchor="middle" class="cardNote">两组正确性结论均稳定</text>
+  <rect x="614" y="660" width="250" height="132" rx="16" fill="#102a43" stroke="#38bdf8"/>
+  <text x="739" y="691" text-anchor="middle" class="cardTitle">无 RAG 实时延迟</text><text x="739" y="728" text-anchor="middle" class="cardValue">P95 2466.75 ms</text><text x="739" y="758" text-anchor="middle" class="cardNote">P50 1315.50 ms</text>
+  <rect x="891" y="660" width="250" height="132" rx="16" fill="#102a43" stroke="#38bdf8"/>
+  <text x="1016" y="691" text-anchor="middle" class="cardTitle">无 RAG API Token</text><text x="1016" y="728" text-anchor="middle" class="cardValue">8,038</text><text x="1016" y="758" text-anchor="middle" class="cardNote">32 请求 · 平均 251.19</text>
+
+  <text x="600" y="835" text-anchor="middle" class="cardNote">Wilson 95% CI：RAG 89.28%–100% · 基线 13.25%–42.11% · McNemar p=0.000488</text>
+  <text x="600" y="867" text-anchor="middle" class="tick">RAG 延迟为缓存命中，未与无 RAG 实时延迟计算加速比</text>
 </svg>

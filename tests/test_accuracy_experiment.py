@@ -7,8 +7,13 @@ import pytest
 
 from app.accuracy import (
     AccuracyCase,
+    answerability_summary,
+    effect_size,
+    efficiency_summary,
     load_accuracy_dataset,
     mcnemar_exact,
+    percentile,
+    repeatability_summary,
     score_answers,
     summarize_accuracy,
     wilson_interval,
@@ -105,14 +110,66 @@ def test_mcnemar_exact_reports_paired_disagreements():
     }
 
 
+def test_extended_effect_answerability_and_efficiency_metrics():
+    cases = [case("one", "text"), case("two", "refusal")]
+    observations = score_answers(cases, {"one": "yes", "two": "no"})
+    observations[0].update(round=1, duration_ms=100)
+    observations[1].update(round=1, duration_ms=300)
+
+    assert answerability_summary(observations) == {
+        "answerable_questions": {"correct": 1, "total": 1, "accuracy": 1.0},
+        "unanswerable_refusal_questions": {
+            "correct": 0,
+            "total": 1,
+            "accuracy": 0.0,
+        },
+    }
+    efficiency = efficiency_summary(observations)
+    assert efficiency["latency"]["mean_ms"] == 200
+    assert efficiency["latency"]["p95_ms"] == 290
+    assert percentile([100, 300], 0.5) == 200
+    assert effect_size(1, 0.25) == {
+        "accuracy_gain_percentage_points": 75.0,
+        "accuracy_ratio": 4.0,
+        "relative_accuracy_improvement": 3.0,
+        "error_reduction_rate": 1.0,
+    }
+
+
+def test_repeatability_reports_correctness_and_exact_answer_agreement():
+    observations = [
+        {"case_id": "one", "round": 1, "correct": True, "answer": "yes"},
+        {"case_id": "two", "round": 1, "correct": False, "answer": "no"},
+        {"case_id": "one", "round": 2, "correct": True, "answer": "yes"},
+        {"case_id": "two", "round": 2, "correct": True, "answer": "yes"},
+    ]
+
+    summary = repeatability_summary(observations, rounds=2)
+
+    assert summary["correctness_agreement_rate"] == 0.5
+    assert summary["exact_answer_match_rate"] == 0.5
+    assert summary["accuracy_by_round"] == {"1": 0.5, "2": 1.0}
+    assert summary["accuracy_range"] == 0.5
+
+
 def test_load_rag_answers_selects_one_round_and_rejects_duplicates(tmp_path):
     artifact = tmp_path / "rag.json"
     artifact.write_text(
         json.dumps(
             {
                 "results": [
-                    {"case_id": "one", "round": 1, "answer": "first"},
-                    {"case_id": "one", "round": 2, "answer": "second"},
+                    {
+                        "case_id": "one",
+                        "round": 1,
+                        "answer": "first",
+                        "end_to_end_duration_ms": 10,
+                    },
+                    {
+                        "case_id": "one",
+                        "round": 2,
+                        "answer": "second",
+                        "end_to_end_duration_ms": 11,
+                    },
                 ]
             }
         ),
@@ -120,7 +177,7 @@ def test_load_rag_answers_selects_one_round_and_rejects_duplicates(tmp_path):
     )
 
     assert accuracy_experiment.load_rag_answers(artifact, 1) == {"one": "first"}
-    with pytest.raises(ValueError, match="no answers"):
+    with pytest.raises(ValueError, match="complete rounds"):
         accuracy_experiment.load_rag_answers(artifact, 3)
 
 
@@ -132,7 +189,10 @@ def test_no_rag_baseline_records_answers_and_durations(monkeypatch):
                 accuracy_experiment.BASELINE_SYSTEM_PROMPT
             )
             return SimpleNamespace(
-                choices=[SimpleNamespace(message=SimpleNamespace(content="yes"))]
+                choices=[SimpleNamespace(message=SimpleNamespace(content="yes"))],
+                usage=SimpleNamespace(
+                    prompt_tokens=10, completion_tokens=2, total_tokens=12
+                ),
             )
 
     client = SimpleNamespace(
@@ -141,12 +201,19 @@ def test_no_rag_baseline_records_answers_and_durations(monkeypatch):
     ticks = iter([1.0, 1.125])
     monkeypatch.setattr(accuracy_experiment.time, "perf_counter", lambda: next(ticks))
 
-    answers, durations = accuracy_experiment.run_no_rag_baseline(
+    records = accuracy_experiment.run_no_rag_baseline(
         [case("one")], client, model="model"
     )
 
-    assert answers == {"one": "yes"}
-    assert durations == {"one": 125}
+    assert records == {
+        "one": {
+            "answer": "yes",
+            "duration_ms": 125,
+            "prompt_tokens": 10,
+            "completion_tokens": 2,
+            "total_tokens": 12,
+        }
+    }
 
 
 def test_build_report_contains_statistics_and_no_credentials(tmp_path):
@@ -159,14 +226,38 @@ def test_build_report_contains_statistics_and_no_credentials(tmp_path):
         cases=[case("one")],
         dataset_path=dataset,
         rag_results_path=rag,
-        rag_round=1,
-        rag_answers={"one": "yes"},
-        baseline_answers={"one": "no"},
-        baseline_durations={"one": 50},
+        rag_runs=[
+            {"one": {"answer": "yes", "duration_ms": 10}},
+            {"one": {"answer": "yes", "duration_ms": 11}},
+        ],
+        baseline_runs=[
+            {
+                "one": {
+                    "answer": "no",
+                    "duration_ms": 50,
+                    "prompt_tokens": 4,
+                    "completion_tokens": 1,
+                    "total_tokens": 5,
+                }
+            },
+            {
+                "one": {
+                    "answer": "no",
+                    "duration_ms": 55,
+                    "prompt_tokens": 4,
+                    "completion_tokens": 1,
+                    "total_tokens": 5,
+                }
+            },
+        ],
         model="deepseek-flash",
     )
 
     assert report["systems"]["knowflow_rag"]["summary"]["accuracy"] == 1
     assert report["systems"]["no_rag_baseline"]["summary"]["accuracy"] == 0
     assert report["comparison"]["accuracy_gain_percentage_points"] == 100
+    assert (
+        report["systems"]["knowflow_rag"]["repeatability"]["exact_answer_match_rate"]
+        == 1
+    )
     assert "api_key" not in json.dumps(report).lower()

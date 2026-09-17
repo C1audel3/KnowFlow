@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Demo-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![Tests](https://img.shields.io/badge/tests-479%20passed-brightgreen)](./report/ACCURACY_EXPERIMENT.md)
+[![Tests](https://img.shields.io/badge/tests-481%20passed-brightgreen)](./report/ACCURACY_EXPERIMENT.md)
 
 KnowFlow 是一个面向作品集和技术演示的单机多模态知识库。它在
 [RAG-Anything](https://github.com/HKUDS/RAG-Anything) 与
@@ -38,7 +38,7 @@ FastAPI 和 Streamlit 进行混合检索问答。
 | 请求成功率 | 100% |
 | 固定规则命中率 | 100% |
 | 闭集事实准确率 | KnowFlow 100%，无 RAG 基线 25% |
-| 自动化回归 | 479 passed，1 skipped |
+| 自动化回归 | 481 passed，1 skipped |
 
 “固定规则命中率”表示关键词、任选关键词和禁用词规则全部通过，不等同于开放领域语义
 准确率。提交结果中的 131.88 ms 是已有查询缓存命中时的平均延迟，不能视为首次生成
@@ -46,8 +46,8 @@ FastAPI 和 Streamlit 进行混合检索问答。
 
 ![KnowFlow Streamlit 页面](./report/screenshots/knowflow_ui.png)
 
-同一 DeepSeek 模型的配对消融实验显示，KnowFlow 在 16 题闭集事实集上的准确率为
-100%，无 RAG 基线为 25%，提升 75 个百分点。该结论仅适用于提交的合成测试集，
+同一 DeepSeek 模型的两轮配对消融实验共分析 64 个真实回答：KnowFlow 在 16 题闭集
+事实集上的准确率为 100%，无 RAG 基线为 25%，提升 75 个百分点。该结论仅适用于提交的合成测试集，
 完整方法、置信区间与显著性检验见[准确率对照实验](./report/ACCURACY_EXPERIMENT.md)。
 
 ![KnowFlow 准确率对照实验](./assets/accuracy_experiment.svg)
