@@ -1,0 +1,584 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-17T06:33:08.254313+00:00",
+  "experiment": "paired_rag_vs_no_rag_closed_set_accuracy",
+  "dataset": "accuracy_experiment.jsonl",
+  "dataset_sha256": "bbf79e02d88a1302b8618c611ca6ec2811130d9653e98bfed69855806a644f98",
+  "case_count": 16,
+  "model": "deepseek-flash",
+  "temperature": 0,
+  "baseline_system_prompt": "你正在参加一个闭卷事实问答实验。你没有外部知识库或用户文档。请直接、简洁地回答问题；如果问题依赖未提供的私有或合成资料，必须明确说明不知道或资料未提供，不得猜测。",
+  "scoring": {
+    "unit": "one binary correctness decision per question",
+    "rule": "pre-registered all/any/forbidden keyword rubric",
+    "confidence_interval": "Wilson score interval, 95%",
+    "paired_test": "exact two-sided McNemar test"
+  },
+  "rag_source": {
+    "artifact": "phase5_results.json",
+    "round": 1
+  },
+  "comparison": {
+    "accuracy_gain_percentage_points": 75.0,
+    "mcnemar": {
+      "first_correct_second_wrong": 12,
+      "first_wrong_second_correct": 0,
+      "discordant_pairs": 12,
+      "exact_two_sided_p_value": 0.000488
+    }
+  },
+  "systems": {
+    "knowflow_rag": {
+      "summary": {
+        "correct": 16,
+        "total": 16,
+        "accuracy": 1.0,
+        "wilson_95_ci": [
+          0.8064,
+          1
+        ],
+        "macro_accuracy": 1.0,
+        "by_type": {
+          "cross_document": {
+            "correct": 2,
+            "total": 2,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.3424,
+              1
+            ]
+          },
+          "equation": {
+            "correct": 2,
+            "total": 2,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.3424,
+              1
+            ]
+          },
+          "image": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.4385,
+              1
+            ]
+          },
+          "refusal": {
+            "correct": 2,
+            "total": 2,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.3424,
+              1
+            ]
+          },
+          "table": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.4385,
+              1
+            ]
+          },
+          "text": {
+            "correct": 4,
+            "total": 4,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.5101,
+              1
+            ]
+          }
+        },
+        "incorrect_case_ids": []
+      },
+      "observations": [
+        {
+          "case_id": "text-release",
+          "type": "text",
+          "question": "Atlas 项目计划在哪个季度发布？",
+          "reference_answer": "2027 Q3",
+          "answer": "根据提供的资料，Project Atlas 计划在 **2027 年第三季度（2027 Q3）** 发布。\n\n具体来说，Atlas Phase 2 Multimodal Report 中指出，Project Atlas 的目标发布时间为 2027 Q3。同一时间框架也适用于 Atlas Phase 2 多模态报告本身，并且试点（pilot）的性能会在 2027 Q3 发布之前进行监控。\n\n### References\n\n- [1] phase2_multimodal.pdf\n- [2] phase2_document.md",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "text-project",
+          "type": "text",
+          "question": "阶段二报告描述的是哪个项目？",
+          "reference_answer": "Project Atlas",
+          "answer": "根据提供的上下文信息，**阶段二报告（Atlas Phase 2 Multimodal Report）描述的是“Project Atlas”（Atlas 项目）**。\n\n具体而言，该报告围绕 Project Atlas 展开，主要内容包括：\n\n- **项目目标与时间**：Project Atlas 计划于 **2027 年 Q3** 发布。该报告本身也以 2027 年 Q3 作为目标发布季度。\n- **验证能力**：报告的试点（pilot）验证了**真实文档解析（real document parsing）**、**多模态索引（multimodal indexing）**与**混合检索（mixed retrieval）**三项能力。\n- **评估方式**：报告包含评估公式（evaluation formula），其中明确将精确率与召回率的调和平均数称为 **F1 分数**，用于阶段二的多模态评估。\n- **相关内容**：报告还包含 Atlas 多模态流水线（Atlas Multimodal Pipeline）的相关内容，以及用来比较传感器性能的 **表 1（Pilot sensor results）**。\n\n此外，该报告在更广泛的 **Atlas 框架（Atlas Framework）** 背景下运行，该框架将“F1 分数是精确率与召回率的调和平均数”这一表述落实为阶段二的多模态评估标准。\n\n### References\n\n- [1] phase2_multimodal.pdf",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "text-owner",
+          "type": "text",
+          "question": "Atlas 知识库试点的负责人是谁？",
+          "reference_answer": "Lin Qiao",
+          "answer": "根据提供的信息，**Atlas 知识库试点（Atlas knowledge-base pilot）的负责人是 Lin Qiao**。\n\n在《Atlas Operations Note》中明确记录了这一信息，指出该试点的负责人为 **Lin Qiao**。此外，该笔记还包含一份发布检查清单（Multimodal indexing 与 Mixed retrieval 均为 Ready 状态），并使用验收标签 `MD-READY-27`。\n\n### References\n\n- [2] phase2_document.md",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "text-tag",
+          "type": "text",
+          "question": "Markdown 运维记录中的验收标签是什么？",
+          "reference_answer": "MD-READY-27",
+          "answer": "根据 Markdown 运维记录（Atlas Operations Note），其验收标签（acceptance tag）为 **`MD-READY-27`**。\n\n该运维记录中明确写道：“The acceptance tag for this note is `MD-READY-27`。”也就是说，`MD-READY-27` 是这份 Atlas 运维记录所携带的验收标签值，用于标识该记录的验收状态。\n\n此外，该运维记录还包含其他相关信息：它记录了 Atlas 知识库试点（Atlas knowledge-base pilot）的所有者为 **Lin Qiao**；说明了 Markdown 路径（Markdown path）可在**不将文档渲染为 PDF** 的情况下验证直接文本解析（direct text parsing）；并包含一份发布清单（Release checklist），其中 **Multimodal indexing（多模态索引）** 与 **Mixed retrieval（混合检索）** 两项状态均为 **Ready**。\n\n### References\n\n- [1] phase2_document.md",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "table-latency",
+          "type": "table",
+          "question": "试验结果中 Sensor-B 的延迟是多少？",
+          "reference_answer": "18 ms",
+          "answer": "根据试验结果（Table 1），**Sensor-B 的延迟为 18 ms**。这是三种传感器中最低的延迟值。\n\n### References\n\n- [1] phase2_multimodal.pdf",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "table-accuracy",
+          "type": "table",
+          "question": "Sensor-B 的准确率是多少？",
+          "reference_answer": "94%",
+          "answer": "根据 **Table 1 “Pilot sensor results”**，**Sensor-B 的准确率是 94%**，是三个传感器中最高的；同时它的延迟为 **18 ms**[1]。\n\n### References\n\n- [1] phase2_multimodal.pdf",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "table-fastest",
+          "type": "table",
+          "question": "三个传感器中哪个传感器的延迟最低？",
+          "reference_answer": "Sensor-B，18 ms",
+          "answer": "在三个传感器中，**Sensor-B 的延迟最低**。Table 1 的试点传感器结果显示，Sensor-B 的延迟为 **18 ms**，低于 Sensor-A 的 24 ms 和 Sensor-C 的 31 ms。\n\n### References\n\n- [1] phase2_multimodal.pdf",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "image-gateway",
+          "type": "image",
+          "question": "架构图中的视觉网关叫什么？",
+          "reference_answer": "ORION VISION GATEWAY",
+          "answer": "根据提供的架构图，视觉网关的名称是 **ORION VISION GATEWAY**（猎户座视觉网关）。\n\n在名为 **ATLAS MULTIMODAL PIPELINE** 的流程图中，三个节点自左向右依次排列，中间节点即为 ORION VISION GATEWAY，接收来自 **DOCUMENTS**（文档）的输入，并输出至 **KNOWLEDGE GRAPH**（知识图谱）。该节点采用浅绿色圆角矩形样式，标签分两行显示为“ORION”与“VISION GATEWAY”。图下方的标注为“IMAGE CODE: PIXEL-42”。\n\n### References\n\n- [1] phase2_multimodal.pdf\n- [2] phase2_document.md\n- [3] phase2_image.png",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "image-code",
+          "type": "image",
+          "question": "独立图片中的 IMAGE CODE 是什么？",
+          "reference_answer": "PIXEL-42",
+          "answer": "根据提供的上下文，独立图片中的 IMAGE CODE 是 **PIXEL-42**。\n\n具体来说，该图片是一张标题为 \"ATLAS MULTIMODAL PIPELINE\" 的水平流程图，图中有三个节点：DOCUMENTS → ORION VISION GATEWAY → KNOWLEDGE GRAPH。在流程图下方、靠近边框底部居中位置，标有 **\"IMAGE CODE: PIXEL-42\"**（粗体深海军蓝大写字母）[1][2][3]。\n\n该图片代码 PIXEL-42 很可能用作检索或验证的标识符 [2]。\n\n### References\n\n- [1] phase2_multimodal.pdf\n- [2] phase2_document.md\n- [3] phase2_image.png",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "image-destination",
+          "type": "image",
+          "question": "ATLAS 多模态流程图最右侧的目标节点是什么？",
+          "reference_answer": "KNOWLEDGE GRAPH（知识图谱）",
+          "answer": "根据提供的上下文，ATLAS 多模态流程图最右侧的目标节点是 **KNOWLEDGE GRAPH**（知识图谱）。\n\n该流程图是一张名为 “ATLAS MULTIMODAL PIPELINE” 的水平流程图，整体呈从左到右的线性处理顺序，共包含三个圆角矩形节点：\n\n- **DOCUMENTS**（浅蓝色填充）——最左侧的输入节点；\n- **ORION VISION GATEWAY**（浅绿色填充）——中间的网关节点；\n- **KNOWLEDGE GRAPH**（浅桃色/橙色填充）——最右侧的目标/输出节点。\n\n节点之间由深色右向箭头连接：第一个箭头从 “DOCUMENTS” 指向 “ORION VISION GATEWAY”，第二个箭头从 “ORION VISION GATEWAY” 指向 “KNOWLEDGE GRAPH”。因此，流程图描绘的是一个文档经过 Orion 视觉网关处理后生成知识图谱的多模态流程，而 **KNOWLEDGE GRAPH 即为最右侧的最终目标节点**。此外，图底部中央还标注了识别码 “IMAGE CODE: PIXEL-42”。\n\n### References\n\n- [1] phase2_multimodal.pdf\n- [2] phase2_document.md\n- [3] phase2_image.png",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": "KNOWLEDGE GRAPH",
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "equation-inputs",
+          "type": "equation",
+          "question": "报告中的 F1 公式综合哪两个指标？",
+          "reference_answer": "精确率与召回率",
+          "answer": "报告中 F1 公式综合的两个指标是 **精确率（Precision）** 和 **召回率（Recall）**。\n\n根据 Atlas Phase 2 多模态报告，F1 分数被明确定义为精确率与召回率的**调和平均数**，其公式表达为 `F1 = 2PR/(P+R)`。具体说明如下：\n\n- **公式构成**：报告的数学公式分析部分给出 `F_{l} = 2 × (Precision × Recall) / (Precision + Recall)`，其中下标 `l` 很可能是 LaTeX/OCR 对数字 1 的误识别，因此预期表达式为 `F1 = 2PR/(P+R)`。\n- **两个指标的定义**：精确率是检索或预测结果中相关/正确项的比例，通常记为 `TP/(TP+FP)`；召回率是相关项中被检索或预测出来的比例，通常记为 `TP/(TP+FN)`。\n- **对称性与取值范围**：该公式对精确率和召回率是对称的，当两者均为 [0,1] 区间的比例时，F1 取值在 0 到 1 之间，且仅当精确率和召回率都为 1 时 F1 才等于 1；若任一指标为 0，则 F1 为 0。\n- **为何使用调和平均**：与算术平均不同，调和平均会惩罚精确率与召回率之间的极端不平衡，因此系统无法通过只最大化其中一个指标而忽略另一个来获得高 F1 分数。\n- **在 Project Atlas Phase 2 中的对应含义**：这两个指标分别对应真实文档解析、多模态索引和混合检索的**质量**（精确率）与**覆盖度**（召回率），为试点评估提供单一平衡分数，用于比较系统、调优阈值以及监控 2027 Q3 发布前的性能。\n\n需要注意的是，报告中的 Table 1（Pilot sensor results）仅报告了延迟和准确率，并未报告精确率与召回率，因此该表并未直接计算上述 F1 分数。\n\n### References\n\n- [1] phase2_multimodal.pdf",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "equation-mean",
+          "type": "equation",
+          "question": "F1 分数使用哪一种平均数？",
+          "reference_answer": "调和平均数（harmonic mean）",
+          "answer": "F1 分数使用的是**调和平均数（harmonic mean）**，而不是算术平均数。\n\n根据 Atlas Phase 2 Multimodal Report，F1 分数被明确称为精确率（precision）与召回率（recall）的调和平均数。其定义公式为：\n\n\\[\nF1 = 2 \\times \\frac{Precision \\times Recall}{Precision + Recall}\n\\]\n\n它也可以等价写成：\n\n\\[\nF1 = \\frac{2}{1/Precision + 1/Recall}\n\\]\n\n调和平均数会惩罚精确率与召回率之间的极端不平衡；与算术平均数不同，系统不能通过只最大化其中一个指标而忽略另一个来获得高 F1 分数。报告中的 F_l 方程也是该公式，其中下标 l 很可能是 LaTeX/OCR 对数字 1 的误识别，因此预期表达式为 F1 = 2PR/(P+R)。\n\n### References\n\n* [1] phase2_multimodal.pdf",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": "调和平均",
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "cross-owner-release",
+          "type": "cross_document",
+          "question": "请同时给出 Atlas 试点负责人和目标发布季度。",
+          "reference_answer": "Lin Qiao，2027 Q3",
+          "answer": "根据提供的资料：\n\n- **Atlas 试点负责人**：**Lin Qiao**，是 Atlas 知识库试点（Atlas knowledge-base pilot）的负责人。[2]\n- **目标发布季度**：**2027 Q3**。Project Atlas 计划在 2027 Q3 发布；其试点用于验证真实文档解析、多模态索引和混合检索。[1]\n\n因此，Atlas 试点负责人是 **Lin Qiao**，目标发布季度是 **2027 Q3**。\n\n### References\n\n* [1] phase2_multimodal.pdf\n* [2] phase2_document.md",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "cross-gateway-code",
+          "type": "cross_document",
+          "question": "请同时给出架构图中的视觉网关名称和图片代码。",
+          "reference_answer": "ORION VISION GATEWAY，PIXEL-42",
+          "answer": "根据架构图 **ATLAS MULTIMODAL PIPELINE**：\n\n- **视觉网关名称**：**ORION VISION GATEWAY**，它是流程图中的中间节点，接收 **DOCUMENTS**，并输出到 **KNOWLEDGE GRAPH** [1][2][3]。\n- **图片代码**：**IMAGE CODE: PIXEL-42**，标注在流程图底部中央 [1][2][3]。\n\n### References\n\n- [1] phase2_multimodal.pdf\n- [2] phase2_document.md\n- [3] phase2_image.png",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "refusal-sensor-d",
+          "type": "refusal",
+          "question": "Sensor-D 的延迟是多少？如果资料没有提供，请明确说明。",
+          "reference_answer": "资料未提供，无法确定",
+          "answer": "根据提供的资料，**没有关于 Sensor-D 的任何信息**，因此无法给出其延迟数值。\n\n现有资料中只包含三个传感器的试点结果（Table 1. Pilot sensor results）：\n\n- **Sensor-A**：24 ms 延迟，91% 准确率\n- **Sensor-B**：18 ms 延迟，94% 准确率（表现最佳）\n- **Sensor-C**：31 ms 延迟，89% 准确率（表现最弱）\n\n**Sensor-D 未被列入该表格，也未在图表、评估公式或 Atlas Operations Note 中出现**，所以资料无法回答其延迟是多少。表格本身也未提供样本量、测试条件或注意事项等脚注信息，因此不能据此推断存在其他传感器。\n\n### References\n\n- [1] phase2_multimodal.pdf\n- [2] phase2_document.md",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": "未提供",
+          "found_forbidden_keywords": []
+        },
+        {
+          "case_id": "refusal-budget",
+          "type": "refusal",
+          "question": "Project Atlas 的预算金额是多少？如果资料没有提供，请明确说明。",
+          "reference_answer": "资料未提供，无法确定",
+          "answer": "根据我目前掌握的**Context**（知识图谱数据与文档片段），**没有提供任何关于 Project Atlas 预算金额的信息**。\n\nContext 中涉及 Project Atlas 的内容主要包括：\n\n- **发布时间**：Project Atlas 计划于 **2027 Q3** 发布。\n- **试点验证内容**：其试点（pilot）验证了真实文档解析（real document parsing）、多模态索引（multimodal indexing）和混合检索（mixed retrieval）。\n- **评估方式**：在 Project Atlas Phase 2 中，通过精确率（precision）与召回率（recall）评估上述任务的质量与覆盖度，并以 F1 分数（精确率与召回率的调和平均）作为评估公式。\n- **其他相关资料**：Atlas Phase 2 Multimodal Report、Atlas Operations Note（含发布检查清单、负责人 Lin Qiao、验收标签 MD-READY-27）以及 Atlas Multimodal Pipeline 流程图等。\n\n以上资料均未提及**预算、成本、经费或任何金额相关数据**。因此，我无法回答 Project Atlas 的预算金额——该信息在所提供的资料中并不存在。如果您有此数据来源，请提供，我可以帮您进一步分析。",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": "没有提供",
+          "found_forbidden_keywords": []
+        }
+      ]
+    },
+    "no_rag_baseline": {
+      "summary": {
+        "correct": 4,
+        "total": 16,
+        "accuracy": 0.25,
+        "wilson_95_ci": [
+          0.1018,
+          0.495
+        ],
+        "macro_accuracy": 0.3333,
+        "by_type": {
+          "cross_document": {
+            "correct": 0,
+            "total": 2,
+            "accuracy": 0.0,
+            "wilson_95_ci": [
+              0,
+              0.6576
+            ]
+          },
+          "equation": {
+            "correct": 2,
+            "total": 2,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.3424,
+              1
+            ]
+          },
+          "image": {
+            "correct": 0,
+            "total": 3,
+            "accuracy": 0.0,
+            "wilson_95_ci": [
+              0,
+              0.5615
+            ]
+          },
+          "refusal": {
+            "correct": 2,
+            "total": 2,
+            "accuracy": 1.0,
+            "wilson_95_ci": [
+              0.3424,
+              1
+            ]
+          },
+          "table": {
+            "correct": 0,
+            "total": 3,
+            "accuracy": 0.0,
+            "wilson_95_ci": [
+              0,
+              0.5615
+            ]
+          },
+          "text": {
+            "correct": 0,
+            "total": 4,
+            "accuracy": 0.0,
+            "wilson_95_ci": [
+              0,
+              0.4899
+            ]
+          }
+        },
+        "incorrect_case_ids": [
+          "text-release",
+          "text-project",
+          "text-owner",
+          "text-tag",
+          "table-latency",
+          "table-accuracy",
+          "table-fastest",
+          "image-gateway",
+          "image-code",
+          "image-destination",
+          "cross-owner-release",
+          "cross-gateway-code"
+        ]
+      },
+      "latency_mean_ms": 1458.81,
+      "observations": [
+        {
+          "case_id": "text-release",
+          "type": "text",
+          "question": "Atlas 项目计划在哪个季度发布？",
+          "reference_answer": "2027 Q3",
+          "answer": "未提供 Atlas 项目的发布计划资料，我无法确定它在哪个季度发布。",
+          "correct": false,
+          "missing_keywords": [
+            "2027",
+            "Q3"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1780
+        },
+        {
+          "case_id": "text-project",
+          "type": "text",
+          "question": "阶段二报告描述的是哪个项目？",
+          "reference_answer": "Project Atlas",
+          "answer": "无法确定。问题中提到的“阶段二报告”未提供具体资料，我不能猜测它描述的是哪个项目。",
+          "correct": false,
+          "missing_keywords": [
+            "Atlas"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1420
+        },
+        {
+          "case_id": "text-owner",
+          "type": "text",
+          "question": "Atlas 知识库试点的负责人是谁？",
+          "reference_answer": "Lin Qiao",
+          "answer": "资料未提供，无法确定 Atlas 知识库试点的负责人是谁。",
+          "correct": false,
+          "missing_keywords": [
+            "Lin Qiao"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1295
+        },
+        {
+          "case_id": "text-tag",
+          "type": "text",
+          "question": "Markdown 运维记录中的验收标签是什么？",
+          "reference_answer": "MD-READY-27",
+          "answer": "未提供相关私有或合成资料，无法确定“Markdown 运维记录中的验收标签”具体指什么。Markdown 本身也没有标准的“验收标签”这一概念。",
+          "correct": false,
+          "missing_keywords": [
+            "MD-READY-27"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1779
+        },
+        {
+          "case_id": "table-latency",
+          "type": "table",
+          "question": "试验结果中 Sensor-B 的延迟是多少？",
+          "reference_answer": "18 ms",
+          "answer": "不知道。未提供试验结果或 Sensor-B 的相关资料。",
+          "correct": false,
+          "missing_keywords": [
+            "18",
+            "ms"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1094
+        },
+        {
+          "case_id": "table-accuracy",
+          "type": "table",
+          "question": "Sensor-B 的准确率是多少？",
+          "reference_answer": "94%",
+          "answer": "我不知道。问题所需的 Sensor-B 准确率数据未提供，无法确定。",
+          "correct": false,
+          "missing_keywords": [
+            "94%"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1295
+        },
+        {
+          "case_id": "table-fastest",
+          "type": "table",
+          "question": "三个传感器中哪个传感器的延迟最低？",
+          "reference_answer": "Sensor-B，18 ms",
+          "answer": "未提供三个传感器的相关信息，无法判断哪个延迟最低。",
+          "correct": false,
+          "missing_keywords": [
+            "Sensor-B",
+            "18"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 943
+        },
+        {
+          "case_id": "image-gateway",
+          "type": "image",
+          "question": "架构图中的视觉网关叫什么？",
+          "reference_answer": "ORION VISION GATEWAY",
+          "answer": "未提供架构图，无法确定“视觉网关”叫什么。资料未提供，我不能猜测。",
+          "correct": false,
+          "missing_keywords": [
+            "ORION"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1453
+        },
+        {
+          "case_id": "image-code",
+          "type": "image",
+          "question": "独立图片中的 IMAGE CODE 是什么？",
+          "reference_answer": "PIXEL-42",
+          "answer": "不知道。未提供独立图片，因此无法确定其中的 IMAGE CODE。",
+          "correct": false,
+          "missing_keywords": [
+            "PIXEL-42"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1159
+        },
+        {
+          "case_id": "image-destination",
+          "type": "image",
+          "question": "ATLAS 多模态流程图最右侧的目标节点是什么？",
+          "reference_answer": "KNOWLEDGE GRAPH（知识图谱）",
+          "answer": "资料未提供，无法确定 ATLAS 多模态流程图最右侧的目标节点。",
+          "correct": false,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 2173
+        },
+        {
+          "case_id": "equation-inputs",
+          "type": "equation",
+          "question": "报告中的 F1 公式综合哪两个指标？",
+          "reference_answer": "精确率与召回率",
+          "answer": "F1 通常综合**精确率（Precision）**和**召回率（Recall）**，是二者的调和平均。若特指某份未提供的报告，其具体定义我无法确认。",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 2237
+        },
+        {
+          "case_id": "equation-mean",
+          "type": "equation",
+          "question": "F1 分数使用哪一种平均数？",
+          "reference_answer": "调和平均数（harmonic mean）",
+          "answer": "F1 分数使用的是**调和平均数**（harmonic mean），即精确率（Precision）和召回率（Recall）的调和平均：\n\n\\[\nF1 = \\frac{2PR}{P+R}\n\\]",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": "调和平均",
+          "found_forbidden_keywords": [],
+          "duration_ms": 981
+        },
+        {
+          "case_id": "cross-owner-release",
+          "type": "cross_document",
+          "question": "请同时给出 Atlas 试点负责人和目标发布季度。",
+          "reference_answer": "Lin Qiao，2027 Q3",
+          "answer": "资料未提供，无法确定 Atlas 试点负责人和目标发布季度。",
+          "correct": false,
+          "missing_keywords": [
+            "Lin Qiao",
+            "2027",
+            "Q3"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1589
+        },
+        {
+          "case_id": "cross-gateway-code",
+          "type": "cross_document",
+          "question": "请同时给出架构图中的视觉网关名称和图片代码。",
+          "reference_answer": "ORION VISION GATEWAY，PIXEL-42",
+          "answer": "未提供架构图或相关资料，无法确定“视觉网关”的名称和“图片代码”。我不能猜测；请提供架构图或相关文档。",
+          "correct": false,
+          "missing_keywords": [
+            "ORION",
+            "PIXEL-42"
+          ],
+          "matched_any_keyword": null,
+          "found_forbidden_keywords": [],
+          "duration_ms": 1759
+        },
+        {
+          "case_id": "refusal-sensor-d",
+          "type": "refusal",
+          "question": "Sensor-D 的延迟是多少？如果资料没有提供，请明确说明。",
+          "reference_answer": "资料未提供，无法确定",
+          "answer": "资料未提供 Sensor-D 的延迟信息，因此无法确定。",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": "未提供",
+          "found_forbidden_keywords": [],
+          "duration_ms": 1109
+        },
+        {
+          "case_id": "refusal-budget",
+          "type": "refusal",
+          "question": "Project Atlas 的预算金额是多少？如果资料没有提供，请明确说明。",
+          "reference_answer": "资料未提供，无法确定",
+          "answer": "资料未提供，我无法确认 Project Atlas 的预算金额。",
+          "correct": true,
+          "missing_keywords": [],
+          "matched_any_keyword": "未提供",
+          "found_forbidden_keywords": [],
+          "duration_ms": 1275
+        }
+      ]
+    }
+  }
+}
