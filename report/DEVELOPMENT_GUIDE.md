@@ -1,6 +1,6 @@
 # 轻量级多模态 RAG 开发文档
 
-> 本文描述轻量级多模态 RAG 应用层。阶段 0～5 已实现，当前系统已具备 API、Streamlit 页面和固定评测闭环。
+> 本文描述轻量级多模态 RAG 应用层。阶段 0～6 已完成，当前系统已具备 API、Streamlit 页面、固定评测和完整交付材料。
 
 ## 1. 当前基础
 
@@ -507,3 +507,13 @@ chore: 工程维护
 - 来源返回能力取决于 LightRAG 查询结果格式，需要在实现阶段验证。
 
 这些限制应保留在最终 README 中，便于面试时准确解释技术边界。
+
+## 16. 最终交付入口
+
+- 根目录 `README.md`：新用户安装、启动、API、测试与评测入口。
+- `assets/knowflow_architecture.svg`：项目架构图。
+- `report/PHASE_6_DELIVERY.md`：最终交付和安全审计记录。
+- `report/RESUME_AND_INTERVIEW.md`：简历表述、讲解提纲和面试问答。
+- `report/artifacts/phase5_results.json`：可追溯的真实评测原始结果。
+
+阶段 6 不新增 RAG 功能，重点是保证项目范围、启动路径、评测口径和个人贡献能够被新用户及面试官快速理解。

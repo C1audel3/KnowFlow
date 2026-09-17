@@ -12,7 +12,7 @@
 
 | 项目 | 结果 |
 |---|---|
-| Conda | Miniconda `26.7.1`，系统级安装于 `/home/administrator/miniconda3` |
+| Conda | Miniconda `26.7.1`，系统级安装 |
 | Conda 环境 | `raganything-dev` |
 | Python | `3.12.14` |
 | pip | `26.2.1` |

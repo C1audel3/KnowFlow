@@ -6,9 +6,12 @@ build-backend = "setuptools.build_meta"
 name = "raganything"
 dynamic = ["version"]
 authors = [
-    {name = "Zirui Guo"}
+    {name = "Zirui Guo and RAG-Anything contributors"}
 ]
-description = "RAGAnything: All-in-One RAG System"
+maintainers = [
+    {name = "C1audel3"}
+]
+description = "KnowFlow: a lightweight multimodal RAG application built on RAG-Anything"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10,<3.13"
@@ -85,10 +88,11 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/HKUDS/RAG-Anything"
-Documentation = "https://github.com/HKUDS/RAG-Anything"
-Repository = "https://github.com/HKUDS/RAG-Anything"
-Issues = "https://github.com/HKUDS/RAG-Anything/issues"
+Homepage = "https://github.com/C1audel3/KnowFlow"
+Documentation = "https://github.com/C1audel3/KnowFlow/tree/main/report"
+Repository = "https://github.com/C1audel3/KnowFlow"
+Issues = "https://github.com/C1audel3/KnowFlow/issues"
+Upstream = "https://github.com/HKUDS/RAG-Anything"
 
 [tool.setuptools.packages.find]
 include = ["app*", "raganything*", "ui*"]
