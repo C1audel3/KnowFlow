@@ -1,0 +1,254 @@
+key,system,case_id,type,difficulty,answer,correct,latency_ms,total_tokens,citation_precision,citation_recall
+hybrid_rag:cross-01-gateway-sensor,hybrid_rag,cross-01-gateway-sensor,cross_document,medium,Aster 的视觉网关是 NOVA；Birch 的传感器编号是 S-24。[EVIDENCE:p01-image][EVIDENCE:p02-table],True,2101,622,1.0,1.0
+hybrid_rag:cross-01-owner-release,hybrid_rag,cross-01-owner-release,cross_document,easy,Aster 项目的负责人是赵宁；Birch 项目的目标发布时间是 2027 Q2。[EVIDENCE:p01-text][EVIDENCE:p02-text],True,1536,507,1.0,1.0
+hybrid_rag:cross-02-gateway-sensor,hybrid_rag,cross-02-gateway-sensor,cross_document,medium,Birch 的视觉网关是 LYRA；Cedar 的传感器编号是 S-31。[EVIDENCE:p02-image][EVIDENCE:p03-table],True,1344,518,1.0,1.0
+hybrid_rag:cross-02-owner-release,hybrid_rag,cross-02-owner-release,cross_document,easy,Birch 的负责人是孙悦；Cedar 的目标发布时间是 2027 Q3。[EVIDENCE:p02-text][EVIDENCE:p03-text],True,1437,476,1.0,1.0
+hybrid_rag:cross-03-gateway-sensor,hybrid_rag,cross-03-gateway-sensor,cross_document,medium,Cedar 的视觉网关是 VEGA，Dawn 的传感器编号是 S-42。[EVIDENCE:p03-image][EVIDENCE:p04-table],True,904,503,1.0,1.0
+hybrid_rag:cross-03-owner-release,hybrid_rag,cross-03-owner-release,cross_document,easy,Cedar 的负责人是周凯；Dawn 的发布时间为 2027 Q4。[EVIDENCE:p03-text][EVIDENCE:p04-text],True,1286,493,1.0,1.0
+hybrid_rag:cross-04-gateway-sensor,hybrid_rag,cross-04-gateway-sensor,cross_document,easy,Dawn 的视觉网关为 ORBIT；Ember 的传感器编号为 S-53。[EVIDENCE:p04-image][EVIDENCE:p05-table],True,1732,560,1.0,1.0
+hybrid_rag:cross-04-owner-release,hybrid_rag,cross-04-owner-release,cross_document,hard,Dawn 的负责人是李雯；Ember 的目标发布时间是 2028 Q1。[EVIDENCE:p04-text][EVIDENCE:p05-text],True,837,454,1.0,1.0
+hybrid_rag:cross-05-gateway-sensor,hybrid_rag,cross-05-gateway-sensor,cross_document,hard,Ember 的视觉网关是 POLAR；Fjord 的传感器编号档案未提供，无法确定。[EVIDENCE:p05-image][EVIDENCE:p06-image],False,1932,689,0.5,0.5
+hybrid_rag:cross-05-owner-release,hybrid_rag,cross-05-owner-release,cross_document,medium,Ember 的负责人是陈浩；Fjord 的目标发布时间为 2028 Q2。[EVIDENCE:p05-text][EVIDENCE:p06-text],True,1198,455,1.0,1.0
+hybrid_rag:cross-06-gateway-sensor,hybrid_rag,cross-06-gateway-sensor,cross_document,medium,Fjord 的视觉网关是 SIRIUS；Grove 的传感器编号是 S-75。[EVIDENCE:p06-image] [EVIDENCE:p07-table],True,1431,544,1.0,1.0
+hybrid_rag:cross-06-owner-release,hybrid_rag,cross-06-owner-release,cross_document,easy,Fjord 的负责人是王琪；Grove 的目标发布时间是 2028 Q3。[EVIDENCE:p06-text][EVIDENCE:p07-text],True,895,437,1.0,1.0
+hybrid_rag:cross-07-gateway-sensor,hybrid_rag,cross-07-gateway-sensor,cross_document,easy,Grove 的视觉网关是 ALTAIR；Harbor 的传感器编号是 S-86。[EVIDENCE:p07-image][EVIDENCE:p08-table],True,1293,527,1.0,1.0
+hybrid_rag:cross-07-owner-release,hybrid_rag,cross-07-owner-release,cross_document,hard,Grove 的负责人是郑宇；Harbor 的目标发布时间是 2028 Q4。[EVIDENCE:p07-text][EVIDENCE:p08-text],True,1145,486,1.0,1.0
+hybrid_rag:cross-08-gateway-sensor,hybrid_rag,cross-08-gateway-sensor,cross_document,hard,Harbor 的视觉网关是 MIRA；Iris 的传感器编号是 S-93。[EVIDENCE:p08-image][EVIDENCE:p09-table],True,1194,516,1.0,1.0
+hybrid_rag:cross-08-owner-release,hybrid_rag,cross-08-owner-release,cross_document,medium,"Harbor 的负责人是刘佳；Iris 的目标发布时间是 2029 Q1。  
+[EVIDENCE:p08-text][EVIDENCE:p09-text]",True,1064,466,1.0,1.0
+hybrid_rag:cross-09-owner-release,hybrid_rag,cross-09-owner-release,cross_document,medium,Iris 的负责人是何川；Juniper 的目标发布时间是 2029 Q2。[EVIDENCE:p09-text][EVIDENCE:p10-text],True,1370,473,1.0,1.0
+hybrid_rag:cross-10-owner-release,hybrid_rag,cross-10-owner-release,cross_document,hard,Juniper 的负责人是郭琳；Kite 的目标发布时间是 2029 Q3。[EVIDENCE:p10-text][EVIDENCE:p11-text],True,1294,457,1.0,1.0
+hybrid_rag:cross-11-owner-release,hybrid_rag,cross-11-owner-release,cross_document,easy,Kite 的负责人是马骁；Lumen 的发布时间是 2029 Q4。[EVIDENCE:p11-text][EVIDENCE:p12-text],True,1519,486,1.0,1.0
+hybrid_rag:cross-12-owner-release,hybrid_rag,cross-12-owner-release,cross_document,medium,Lumen 的负责人是唐雪；Aster 的目标发布时间是 2027 Q1。[EVIDENCE:p12-text][EVIDENCE:p01-text],True,1541,494,1.0,1.0
+hybrid_rag:equation-01-definition,hybrid_rag,equation-01-definition,equation,hard,F1 的定义为 2PR/(P+R)。 [EVIDENCE:p01-equation],True,1090,420,1.0,1.0
+hybrid_rag:equation-01-metric,hybrid_rag,equation-01-metric,equation,medium,Aster 项目本轮验收使用的评测指标是 F1，定义为 2PR/(P+R)。[EVIDENCE:p01-equation],True,889,301,1.0,1.0
+hybrid_rag:equation-02-definition,hybrid_rag,equation-02-definition,equation,hard,IoU 在档案中的定义为：交集/并集。[EVIDENCE:p02-equation],True,994,438,1.0,1.0
+hybrid_rag:equation-02-metric,hybrid_rag,equation-02-metric,equation,medium,Birch 验收使用的评测指标是 **IoU**（交集/并集）。[EVIDENCE:p02-equation],True,1223,358,1.0,1.0
+hybrid_rag:equation-03-definition,hybrid_rag,equation-03-definition,equation,hard,MAE 的定义为 |y-ŷ| 的平均值。该指标仅用于 Cedar 项目本轮验收。 [EVIDENCE:p03-equation],True,799,436,1.0,1.0
+hybrid_rag:equation-03-metric,hybrid_rag,equation-03-metric,equation,medium,Cedar 项目本轮验收使用的评测指标是 MAE。[EVIDENCE:p03-equation],True,816,374,1.0,1.0
+hybrid_rag:equation-04-metric,hybrid_rag,equation-04-metric,equation,medium,Dawn 验收使用的评测指标是 RMSE（平方误差均值开方）。[EVIDENCE:p04-equation],True,885,339,1.0,1.0
+hybrid_rag:equation-05-metric,hybrid_rag,equation-05-metric,equation,easy,Ember 验收使用的评测指标是 MAPE（绝对百分比误差均值）。[EVIDENCE:p05-equation],True,1208,381,1.0,1.0
+hybrid_rag:equation-06-metric,hybrid_rag,equation-06-metric,equation,hard,Fjord 验收使用的评测指标是 R2（定义为 1-SSE/SST）。[EVIDENCE:p06-equation],True,931,402,1.0,1.0
+hybrid_rag:equation-07-metric,hybrid_rag,equation-07-metric,equation,medium,Grove 验收使用的评测指标是 Dice。[EVIDENCE:p07-equation],True,771,381,1.0,1.0
+hybrid_rag:equation-08-metric,hybrid_rag,equation-08-metric,equation,easy,Harbor 验收使用的评测指标是 BLEU。[EVIDENCE:p08-equation],True,856,338,1.0,1.0
+hybrid_rag:equation-09-metric,hybrid_rag,equation-09-metric,equation,easy,Iris 验收使用的评测指标是 AUC。[EVIDENCE:p09-equation],True,1028,383,1.0,1.0
+hybrid_rag:equation-10-metric,hybrid_rag,equation-10-metric,equation,medium,Juniper 验收使用的评测指标是 NDCG。[EVIDENCE:p10-equation],True,1061,402,1.0,1.0
+hybrid_rag:equation-11-metric,hybrid_rag,equation-11-metric,equation,hard,MRR。 [EVIDENCE:p11-equation],True,769,354,1.0,1.0
+hybrid_rag:equation-12-metric,hybrid_rag,equation-12-metric,equation,easy,Lumen 项目本轮验收使用的评测指标是 Recall。 [EVIDENCE:p12-equation],True,813,349,1.0,1.0
+hybrid_rag:image-01-code,hybrid_rag,image-01-code,image,easy,Aster 的图像校验码是 IMG-A17。[EVIDENCE:p01-image],True,1015,359,1.0,1.0
+hybrid_rag:image-01-gateway,hybrid_rag,image-01-gateway,image,hard,Aster 架构图中的视觉网关叫 NOVA。[EVIDENCE:p01-image],True,935,407,1.0,1.0
+hybrid_rag:image-02-code,hybrid_rag,image-02-code,image,easy,Birch 的图像校验码是 IMG-B24。[EVIDENCE:p02-image],True,921,391,1.0,1.0
+hybrid_rag:image-02-gateway,hybrid_rag,image-02-gateway,image,hard,Birch 的视觉网关叫 LYRA。[EVIDENCE:p02-image],True,898,411,1.0,1.0
+hybrid_rag:image-03-code,hybrid_rag,image-03-code,image,easy,Cedar 的图像校验码是 IMG-C31。[EVIDENCE:p03-image],True,844,419,1.0,1.0
+hybrid_rag:image-03-gateway,hybrid_rag,image-03-gateway,image,hard,Cedar 架构图中的视觉网关叫 VEGA。[EVIDENCE:p03-image],True,553,402,1.0,1.0
+hybrid_rag:image-04-code,hybrid_rag,image-04-code,image,easy,Dawn 的图像校验码是 IMG-D42。[EVIDENCE:p04-image],True,859,414,1.0,1.0
+hybrid_rag:image-04-gateway,hybrid_rag,image-04-gateway,image,hard,Dawn 架构图中的视觉网关叫 ORBIT。[EVIDENCE:p04-image],True,1039,393,1.0,1.0
+hybrid_rag:image-05-code,hybrid_rag,image-05-code,image,hard,Ember 的图像校验码是 IMG-E53。[EVIDENCE:p05-image],True,748,428,1.0,1.0
+hybrid_rag:image-05-gateway,hybrid_rag,image-05-gateway,image,medium,Ember 架构图中的视觉网关叫 POLAR。 [EVIDENCE:p05-image],True,881,357,1.0,1.0
+hybrid_rag:image-06-code,hybrid_rag,image-06-code,image,medium,Fjord 的图像校验码是 IMG-F68。[EVIDENCE:p06-image],True,1095,425,1.0,1.0
+hybrid_rag:image-06-gateway,hybrid_rag,image-06-gateway,image,easy,Fjord 架构图中的视觉网关叫 SIRIUS。[EVIDENCE:p06-image],True,990,459,1.0,1.0
+hybrid_rag:image-07-code,hybrid_rag,image-07-code,image,easy,Grove 的图像校验码是 IMG-G75。[EVIDENCE:p07-image],True,987,402,1.0,1.0
+hybrid_rag:image-07-gateway,hybrid_rag,image-07-gateway,image,hard,Grove 架构图中的视觉网关叫 ALTAIR。[EVIDENCE:p07-image],True,817,359,1.0,1.0
+hybrid_rag:image-08-code,hybrid_rag,image-08-code,image,hard,Harbor 的图像校验码是 IMG-H86。[EVIDENCE:p08-image],True,810,396,1.0,1.0
+hybrid_rag:image-08-gateway,hybrid_rag,image-08-gateway,image,medium,Harbor 架构图中的视觉网关叫 MIRA。[EVIDENCE:p08-image],True,836,422,1.0,1.0
+hybrid_rag:image-09-gateway,hybrid_rag,image-09-gateway,image,hard,Iris 的视觉网关叫 RIGEL。[EVIDENCE:p09-image],True,816,453,1.0,1.0
+hybrid_rag:image-10-gateway,hybrid_rag,image-10-gateway,image,easy,Juniper 的视觉网关是 DENEB。[EVIDENCE:p10-image],True,1344,461,1.0,1.0
+hybrid_rag:image-11-gateway,hybrid_rag,image-11-gateway,image,medium,Kite 架构图中的视觉网关叫 ARCTURUS。[EVIDENCE:p11-image],True,906,405,1.0,1.0
+hybrid_rag:image-12-gateway,hybrid_rag,image-12-gateway,image,hard,Lumen 的视觉网关叫 CAPELLA。[EVIDENCE:p12-image],True,939,410,1.0,1.0
+hybrid_rag:refusal-01-budget,hybrid_rag,refusal-01-budget,refusal,hard,档案未提供 Aster 项目的预算，无法确定。[EVIDENCE:p01-text][EVIDENCE:p01-table][EVIDENCE:p01-image],True,2302,719,0.333333,1.0
+hybrid_rag:refusal-01-vendor,hybrid_rag,refusal-01-vendor,refusal,easy,档案未提供 Aster 项目的云厂商信息，无法确定。[EVIDENCE:p01-text][EVIDENCE:p01-image][EVIDENCE:p01-table],True,2981,807,0.333333,1.0
+hybrid_rag:refusal-02-budget,hybrid_rag,refusal-02-budget,refusal,hard,档案未提供 Birch 项目的预算，无法确定。[EVIDENCE:p02-text][EVIDENCE:p02-image][EVIDENCE:p02-table],True,1598,493,0.333333,1.0
+hybrid_rag:refusal-02-vendor,hybrid_rag,refusal-02-vendor,refusal,easy,档案未提供，无法确定。 [EVIDENCE:p02-text][EVIDENCE:p02-image][EVIDENCE:p02-table],True,1866,622,0.333333,1.0
+hybrid_rag:refusal-03-budget,hybrid_rag,refusal-03-budget,refusal,hard,"档案未提供，无法确定。
+
+[EVIDENCE:p03-text][EVIDENCE:p03-table][EVIDENCE:p03-image]",True,1812,613,0.333333,1.0
+hybrid_rag:refusal-03-vendor,hybrid_rag,refusal-03-vendor,refusal,easy,"档案未提供，无法确定 Cedar 项目的云厂商。
+
+[EVIDENCE:p03-text][EVIDENCE:p03-image][EVIDENCE:p03-table]",True,1186,404,0.333333,1.0
+hybrid_rag:refusal-04-budget,hybrid_rag,refusal-04-budget,refusal,medium,档案未提供 Dawn 项目的预算，无法确定。[EVIDENCE:p04-text][EVIDENCE:p04-table][EVIDENCE:p04-image],True,990,500,0.333333,1.0
+hybrid_rag:refusal-04-vendor,hybrid_rag,refusal-04-vendor,refusal,hard,档案未提供，无法确定。 [EVIDENCE:p04-text][EVIDENCE:p04-image][EVIDENCE:p04-table],True,1481,637,0.333333,1.0
+hybrid_rag:refusal-05-budget,hybrid_rag,refusal-05-budget,refusal,easy,档案未提供 Ember 项目的预算，无法确定。[EVIDENCE:p05-text][EVIDENCE:p05-table],True,1585,626,0.5,1.0
+hybrid_rag:refusal-05-vendor,hybrid_rag,refusal-05-vendor,refusal,medium,"档案未提供 Ember 项目的云厂商信息，无法确定。
+
+[EVIDENCE:p05-text][EVIDENCE:p05-table][EVIDENCE:p05-image]",True,1420,544,0.333333,1.0
+hybrid_rag:refusal-06-budget,hybrid_rag,refusal-06-budget,refusal,hard,档案未提供 Fjord 项目的预算，无法确定。[EVIDENCE:p06-text][EVIDENCE:p06-image][EVIDENCE:p06-table],True,1667,566,0.333333,1.0
+hybrid_rag:refusal-06-vendor,hybrid_rag,refusal-06-vendor,refusal,easy,"档案未提供，无法确定 Fjord 项目的云厂商。
+
+[EVIDENCE:p06-text][EVIDENCE:p06-image][EVIDENCE:p06-table]",True,1695,593,0.333333,1.0
+hybrid_rag:refusal-07-budget,hybrid_rag,refusal-07-budget,refusal,medium,档案未提供 Grove 项目的预算，无法确定。[EVIDENCE:p07-text][EVIDENCE:p07-table][EVIDENCE:p07-image],True,1586,538,0.333333,1.0
+hybrid_rag:refusal-07-vendor,hybrid_rag,refusal-07-vendor,refusal,hard,档案未提供 Grove 项目的云厂商信息，无法确定。[EVIDENCE:p07-text][EVIDENCE:p07-image][EVIDENCE:p07-table],True,1657,584,0.333333,1.0
+hybrid_rag:refusal-08-budget,hybrid_rag,refusal-08-budget,refusal,easy,档案未提供，无法确定。 [EVIDENCE:p08-text][EVIDENCE:p08-table][EVIDENCE:p08-image],True,1665,559,0.333333,1.0
+hybrid_rag:refusal-08-vendor,hybrid_rag,refusal-08-vendor,refusal,medium,"档案未提供 Harbor 项目的云厂商信息，无法确定。
+
+[EVIDENCE:p08-text][EVIDENCE:p08-image][EVIDENCE:p08-table]",True,1490,559,0.333333,1.0
+hybrid_rag:refusal-09-budget,hybrid_rag,refusal-09-budget,refusal,hard,档案未提供 Iris 项目的预算信息，无法确定。[EVIDENCE:p09-text][EVIDENCE:p09-table][EVIDENCE:p09-image],True,1651,570,0.333333,1.0
+hybrid_rag:refusal-10-budget,hybrid_rag,refusal-10-budget,refusal,easy,"档案未提供 Juniper 项目的预算信息，无法确定。
+
+[EVIDENCE:p10-text][EVIDENCE:p10-image][EVIDENCE:p10-table]",True,980,391,0.333333,1.0
+hybrid_rag:refusal-11-budget,hybrid_rag,refusal-11-budget,refusal,medium,档案未提供 Kite 项目的预算，无法确定。[EVIDENCE:p11-text][EVIDENCE:p11-table][EVIDENCE:p11-image],True,1477,574,0.333333,1.0
+hybrid_rag:refusal-12-budget,hybrid_rag,refusal-12-budget,refusal,hard,档案未提供 Lumen 项目的预算，无法确定。[EVIDENCE:p12-text][EVIDENCE:p12-image][EVIDENCE:p12-table],True,1698,629,0.333333,1.0
+hybrid_rag:table-01-accuracy,hybrid_rag,table-01-accuracy,table,medium,S-17 的准确率是 93%。[EVIDENCE:p01-table],True,1082,441,1.0,1.0
+hybrid_rag:table-01-latency,hybrid_rag,table-01-latency,table,easy,Aster 项目所用传感器的延迟是 21 ms。[EVIDENCE:p01-table],True,982,391,1.0,1.0
+hybrid_rag:table-02-accuracy,hybrid_rag,table-02-accuracy,table,medium,S-24 的准确率是 96%。[EVIDENCE:p02-table],True,1237,399,1.0,1.0
+hybrid_rag:table-02-latency,hybrid_rag,table-02-latency,table,easy,Birch 项目所用传感器的延迟是 18 ms。[EVIDENCE:p02-table],True,1019,395,1.0,1.0
+hybrid_rag:table-03-accuracy,hybrid_rag,table-03-accuracy,table,medium,S-31 的准确率是 91%。[EVIDENCE:p03-table],True,788,376,1.0,1.0
+hybrid_rag:table-03-latency,hybrid_rag,table-03-latency,table,easy,Cedar 项目所用传感器的延迟是 27 ms。[EVIDENCE:p03-table],True,1092,399,1.0,1.0
+hybrid_rag:table-04-accuracy,hybrid_rag,table-04-accuracy,table,medium,S-42 的准确率是 97%。[EVIDENCE:p04-table],True,606,387,1.0,1.0
+hybrid_rag:table-04-latency,hybrid_rag,table-04-latency,table,easy,Dawn 项目所用传感器的延迟是 16 ms。[EVIDENCE:p04-table],True,1190,433,1.0,1.0
+hybrid_rag:table-05-accuracy,hybrid_rag,table-05-accuracy,table,easy,S-53 的准确率是 92%。 [EVIDENCE:p05-table],True,1017,400,1.0,1.0
+hybrid_rag:table-05-latency,hybrid_rag,table-05-latency,table,hard,Ember 项目所用传感器的延迟是 25 ms。[EVIDENCE:p05-table],True,934,404,1.0,1.0
+hybrid_rag:table-06-accuracy,hybrid_rag,table-06-accuracy,table,hard,S-68 的准确率是 **95%**。[EVIDENCE:p06-table],True,1143,385,1.0,1.0
+hybrid_rag:table-06-latency,hybrid_rag,table-06-latency,table,medium,Fjord 项目所用传感器的延迟是 19 ms。[EVIDENCE:p06-table],True,830,439,1.0,1.0
+hybrid_rag:table-07-accuracy,hybrid_rag,table-07-accuracy,table,medium,94% [EVIDENCE:p07-table],True,1652,431,1.0,1.0
+hybrid_rag:table-07-latency,hybrid_rag,table-07-latency,table,easy,Grove 项目所用传感器的延迟是 23 ms。[EVIDENCE:p07-table],True,991,391,1.0,1.0
+hybrid_rag:table-08-accuracy,hybrid_rag,table-08-accuracy,table,easy,S-86 的准确率是 98%。[EVIDENCE:p08-table],True,1074,441,1.0,1.0
+hybrid_rag:table-08-latency,hybrid_rag,table-08-latency,table,hard,Harbor 项目所用传感器的延迟是 15 ms。[EVIDENCE:p08-table],True,888,420,1.0,1.0
+hybrid_rag:table-09-latency,hybrid_rag,table-09-latency,table,medium,Iris 项目所用传感器的延迟是 29 ms。[EVIDENCE:p09-table],True,1042,403,1.0,1.0
+hybrid_rag:table-10-latency,hybrid_rag,table-10-latency,table,hard,Juniper 项目所用传感器的延迟是 20 ms。[EVIDENCE:p10-table],True,860,381,1.0,1.0
+hybrid_rag:table-11-latency,hybrid_rag,table-11-latency,table,easy,Kite 项目所用传感器的延迟是 17 ms。[EVIDENCE:p11-table],True,861,394,1.0,1.0
+hybrid_rag:table-12-latency,hybrid_rag,table-12-latency,table,medium,Lumen 项目所用传感器的延迟是 24 ms。[EVIDENCE:p12-table],True,954,384,1.0,1.0
+hybrid_rag:text-01-city,hybrid_rag,text-01-city,text,hard,Aster 项目的试点城市是成都。[EVIDENCE:p01-text],True,1167,376,1.0,1.0
+hybrid_rag:text-01-owner,hybrid_rag,text-01-owner,text,easy,Aster 项目的负责人是赵宁。[EVIDENCE:p01-text],True,1433,363,1.0,1.0
+hybrid_rag:text-01-release,hybrid_rag,text-01-release,text,medium,Aster 项目的目标发布时间是 2027 Q1。[EVIDENCE:p01-text],True,1631,385,1.0,1.0
+hybrid_rag:text-02-owner,hybrid_rag,text-02-owner,text,medium,孙悦 [EVIDENCE:p02-text],True,980,349,1.0,1.0
+hybrid_rag:text-02-release,hybrid_rag,text-02-release,text,hard,Birch 项目的目标发布时间是 2027 Q2。[EVIDENCE:p02-text],True,794,396,1.0,1.0
+hybrid_rag:text-03-owner,hybrid_rag,text-03-owner,text,medium,周凯。[EVIDENCE:p03-text],True,914,361,1.0,1.0
+hybrid_rag:text-03-release,hybrid_rag,text-03-release,text,hard,Cedar 项目的目标发布时间是 2027 Q3。[EVIDENCE:p03-text],True,985,419,1.0,1.0
+hybrid_rag:text-04-owner,hybrid_rag,text-04-owner,text,medium,Dawn 项目的负责人是李雯。[EVIDENCE:p04-text],True,801,339,1.0,1.0
+hybrid_rag:text-04-release,hybrid_rag,text-04-release,text,hard,Dawn 项目的目标发布时间是 2027 Q4。[EVIDENCE:p04-text],True,1089,362,1.0,1.0
+hybrid_rag:text-05-owner,hybrid_rag,text-05-owner,text,easy,Ember 项目的负责人是陈浩。[EVIDENCE:p05-text],True,783,355,1.0,1.0
+hybrid_rag:text-05-release,hybrid_rag,text-05-release,text,medium,Ember 项目的目标发布时间是 2028 Q1。[EVIDENCE:p05-text],True,1007,360,1.0,1.0
+hybrid_rag:text-06-owner,hybrid_rag,text-06-owner,text,hard,Fjord 项目的负责人是王琪。[EVIDENCE:p06-text],True,876,399,1.0,1.0
+hybrid_rag:text-06-release,hybrid_rag,text-06-release,text,easy,Fjord 项目的目标发布时间是 2028 Q2。[EVIDENCE:p06-text],True,832,434,1.0,1.0
+hybrid_rag:text-07-owner,hybrid_rag,text-07-owner,text,medium,Grove 项目的负责人是郑宇。[EVIDENCE:p07-text],True,1007,366,1.0,1.0
+hybrid_rag:text-07-release,hybrid_rag,text-07-release,text,hard,Grove 项目的目标发布时间是 2028 Q3。[EVIDENCE:p07-text],True,934,369,1.0,1.0
+hybrid_rag:text-08-owner,hybrid_rag,text-08-owner,text,easy,Harbor 项目的负责人是刘佳。[EVIDENCE:p08-text],True,874,369,1.0,1.0
+hybrid_rag:text-08-release,hybrid_rag,text-08-release,text,medium,Harbor 项目的目标发布时间是 2028 Q4。[EVIDENCE:p08-text],True,848,385,1.0,1.0
+hybrid_rag:text-09-owner,hybrid_rag,text-09-owner,text,hard,Iris 项目的负责人是何川。[EVIDENCE:p09-text],True,747,351,1.0,1.0
+hybrid_rag:text-09-release,hybrid_rag,text-09-release,text,easy,Iris 项目的目标发布时间是 2029 Q1。[EVIDENCE:p09-text],True,1134,373,1.0,1.0
+hybrid_rag:text-10-owner,hybrid_rag,text-10-owner,text,easy,Juniper 项目的负责人是郭琳。[EVIDENCE:p10-text],True,861,352,1.0,1.0
+hybrid_rag:text-10-release,hybrid_rag,text-10-release,text,medium,Juniper 项目的目标发布时间是 2029 Q2。[EVIDENCE:p10-text],True,1017,397,1.0,1.0
+hybrid_rag:text-11-owner,hybrid_rag,text-11-owner,text,medium,Kite 项目的负责人是马骁。[EVIDENCE:p11-text],True,1598,361,1.0,1.0
+hybrid_rag:text-11-release,hybrid_rag,text-11-release,text,hard,Kite 项目的目标发布时间是 2029 Q3。[EVIDENCE:p11-text],True,765,375,1.0,1.0
+hybrid_rag:text-12-owner,hybrid_rag,text-12-owner,text,hard,Lumen 项目的负责人是唐雪。[EVIDENCE:p12-text],True,1136,357,1.0,1.0
+hybrid_rag:text-12-release,hybrid_rag,text-12-release,text,easy,Lumen 项目的目标发布时间是 2029 Q4。[EVIDENCE:p12-text],True,1114,342,1.0,1.0
+no_rag:cross-01-gateway-sensor,no_rag,cross-01-gateway-sensor,cross_document,medium,档案未提供，无法确定。,False,767,180,0.0,0.0
+no_rag:cross-01-owner-release,no_rag,cross-01-owner-release,cross_document,easy,档案未提供，无法确定。,False,1036,185,0.0,0.0
+no_rag:cross-02-gateway-sensor,no_rag,cross-02-gateway-sensor,cross_document,medium,档案未提供，无法确定。,False,1094,217,0.0,0.0
+no_rag:cross-02-owner-release,no_rag,cross-02-owner-release,cross_document,easy,档案未提供，无法确定。,False,1129,210,0.0,0.0
+no_rag:cross-03-gateway-sensor,no_rag,cross-03-gateway-sensor,cross_document,medium,档案未提供，无法确定。,False,735,217,0.0,0.0
+no_rag:cross-03-owner-release,no_rag,cross-03-owner-release,cross_document,easy,档案未提供，无法确定。,False,1132,189,0.0,0.0
+no_rag:cross-04-gateway-sensor,no_rag,cross-04-gateway-sensor,cross_document,easy,档案未提供，无法确定。,False,1856,235,0.0,0.0
+no_rag:cross-04-owner-release,no_rag,cross-04-owner-release,cross_document,hard,档案未提供，无法确定。,False,888,227,0.0,0.0
+no_rag:cross-05-gateway-sensor,no_rag,cross-05-gateway-sensor,cross_document,hard,档案未提供，无法确定。,False,1020,168,0.0,0.0
+no_rag:cross-05-owner-release,no_rag,cross-05-owner-release,cross_document,medium,档案未提供，无法确定。,False,1092,187,0.0,0.0
+no_rag:cross-06-gateway-sensor,no_rag,cross-06-gateway-sensor,cross_document,medium,档案未提供，无法确定。,False,778,175,0.0,0.0
+no_rag:cross-06-owner-release,no_rag,cross-06-owner-release,cross_document,easy,档案未提供，无法确定。,False,1094,221,0.0,0.0
+no_rag:cross-07-gateway-sensor,no_rag,cross-07-gateway-sensor,cross_document,easy,档案未提供，无法确定。,False,1263,217,0.0,0.0
+no_rag:cross-07-owner-release,no_rag,cross-07-owner-release,cross_document,hard,档案未提供，无法确定。,False,1670,324,0.0,0.0
+no_rag:cross-08-gateway-sensor,no_rag,cross-08-gateway-sensor,cross_document,hard,档案未提供，无法确定。,False,1264,193,0.0,0.0
+no_rag:cross-08-owner-release,no_rag,cross-08-owner-release,cross_document,medium,档案未提供，无法确定。,False,1186,188,0.0,0.0
+no_rag:cross-09-owner-release,no_rag,cross-09-owner-release,cross_document,medium,档案未提供，无法确定。,False,1072,185,0.0,0.0
+no_rag:cross-10-owner-release,no_rag,cross-10-owner-release,cross_document,hard,档案未提供，无法确定。,False,1012,202,0.0,0.0
+no_rag:cross-11-owner-release,no_rag,cross-11-owner-release,cross_document,easy,档案未提供，无法确定。,False,968,205,0.0,0.0
+no_rag:cross-12-owner-release,no_rag,cross-12-owner-release,cross_document,medium,档案未提供，无法确定。,False,1130,220,0.0,0.0
+no_rag:equation-01-definition,no_rag,equation-01-definition,equation,hard,档案未提供，无法确定。,False,819,200,0.0,0.0
+no_rag:equation-01-metric,no_rag,equation-01-metric,equation,medium,档案未提供，无法确定。,False,1413,236,0.0,0.0
+no_rag:equation-02-definition,no_rag,equation-02-definition,equation,hard,档案未提供，无法确定。,False,1064,191,0.0,0.0
+no_rag:equation-02-metric,no_rag,equation-02-metric,equation,medium,档案未提供，无法确定。,False,1500,242,0.0,0.0
+no_rag:equation-03-definition,no_rag,equation-03-definition,equation,hard,档案未提供，无法确定。,False,963,229,0.0,0.0
+no_rag:equation-03-metric,no_rag,equation-03-metric,equation,medium,档案未提供，无法确定。,False,853,208,0.0,0.0
+no_rag:equation-04-metric,no_rag,equation-04-metric,equation,medium,档案未提供，无法确定。,False,1142,218,0.0,0.0
+no_rag:equation-05-metric,no_rag,equation-05-metric,equation,easy,档案未提供，无法确定。,False,925,177,0.0,0.0
+no_rag:equation-06-metric,no_rag,equation-06-metric,equation,hard,档案未提供，无法确定。,False,1135,195,0.0,0.0
+no_rag:equation-07-metric,no_rag,equation-07-metric,equation,medium,档案未提供，无法确定。,False,1331,209,0.0,0.0
+no_rag:equation-08-metric,no_rag,equation-08-metric,equation,easy,档案未提供，无法确定。,False,1371,239,0.0,0.0
+no_rag:equation-09-metric,no_rag,equation-09-metric,equation,easy,档案未提供，无法确定。,False,963,179,0.0,0.0
+no_rag:equation-10-metric,no_rag,equation-10-metric,equation,medium,档案未提供，无法确定。,False,1466,269,0.0,0.0
+no_rag:equation-11-metric,no_rag,equation-11-metric,equation,hard,档案未提供，无法确定。,False,1146,276,0.0,0.0
+no_rag:equation-12-metric,no_rag,equation-12-metric,equation,easy,档案未提供，无法确定。,False,1687,280,0.0,0.0
+no_rag:image-01-code,no_rag,image-01-code,image,easy,档案未提供，无法确定。,False,829,184,0.0,0.0
+no_rag:image-01-gateway,no_rag,image-01-gateway,image,hard,档案未提供，无法确定。,False,1812,270,0.0,0.0
+no_rag:image-02-code,no_rag,image-02-code,image,easy,档案未提供，无法确定。,False,1351,208,0.0,0.0
+no_rag:image-02-gateway,no_rag,image-02-gateway,image,hard,档案未提供，无法确定。,False,1246,202,0.0,0.0
+no_rag:image-03-code,no_rag,image-03-code,image,easy,档案未提供，无法确定。,False,970,181,0.0,0.0
+no_rag:image-03-gateway,no_rag,image-03-gateway,image,hard,档案未提供，无法确定。,False,1122,197,0.0,0.0
+no_rag:image-04-code,no_rag,image-04-code,image,easy,档案未提供，无法确定。,False,1209,211,0.0,0.0
+no_rag:image-04-gateway,no_rag,image-04-gateway,image,hard,档案未提供，无法确定。,False,1434,267,0.0,0.0
+no_rag:image-05-code,no_rag,image-05-code,image,hard,档案未提供，无法确定。,False,1107,188,0.0,0.0
+no_rag:image-05-gateway,no_rag,image-05-gateway,image,medium,档案未提供，无法确定。,False,1601,188,0.0,0.0
+no_rag:image-06-code,no_rag,image-06-code,image,medium,档案未提供，无法确定。,False,614,168,0.0,0.0
+no_rag:image-06-gateway,no_rag,image-06-gateway,image,easy,档案未提供，无法确定。,False,2481,422,0.0,0.0
+no_rag:image-07-code,no_rag,image-07-code,image,easy,档案未提供，无法确定。,False,1230,197,0.0,0.0
+no_rag:image-07-gateway,no_rag,image-07-gateway,image,hard,档案未提供，无法确定。,False,2014,310,0.0,0.0
+no_rag:image-08-code,no_rag,image-08-code,image,hard,档案未提供，无法确定。,False,2477,379,0.0,0.0
+no_rag:image-08-gateway,no_rag,image-08-gateway,image,medium,Harbor 官方架构图中没有“视觉网关”这一标准名称；入口网关/反向代理叫 **Proxy**（通常由 Nginx 实现），Web 界面叫 **Portal**。若你指某份特定项目档案中的“视觉网关”，则档案未提供，无法确定。,False,16632,3488,0.0,0.0
+no_rag:image-09-gateway,no_rag,image-09-gateway,image,hard,档案未提供，无法确定。,False,1099,227,0.0,0.0
+no_rag:image-10-gateway,no_rag,image-10-gateway,image,easy,档案未提供，无法确定。,False,1923,389,0.0,0.0
+no_rag:image-11-gateway,no_rag,image-11-gateway,image,medium,档案未提供，无法确定。,False,967,227,0.0,0.0
+no_rag:image-12-gateway,no_rag,image-12-gateway,image,hard,档案未提供，无法确定。,False,1207,202,0.0,0.0
+no_rag:refusal-01-budget,no_rag,refusal-01-budget,refusal,hard,档案未提供，无法确定。,True,1126,146,0.0,0.0
+no_rag:refusal-01-vendor,no_rag,refusal-01-vendor,refusal,easy,档案未提供，无法确定。,True,973,182,0.0,0.0
+no_rag:refusal-02-budget,no_rag,refusal-02-budget,refusal,hard,档案未提供，无法确定。,True,481,128,0.0,0.0
+no_rag:refusal-02-vendor,no_rag,refusal-02-vendor,refusal,easy,档案未提供，无法确定。,True,967,138,0.0,0.0
+no_rag:refusal-03-budget,no_rag,refusal-03-budget,refusal,hard,档案未提供，无法确定。,True,735,165,0.0,0.0
+no_rag:refusal-03-vendor,no_rag,refusal-03-vendor,refusal,easy,档案未提供，无法确定。,True,936,189,0.0,0.0
+no_rag:refusal-04-budget,no_rag,refusal-04-budget,refusal,medium,档案未提供，无法确定。,True,982,177,0.0,0.0
+no_rag:refusal-04-vendor,no_rag,refusal-04-vendor,refusal,hard,档案未提供，无法确定 Dawn 项目的云厂商。,True,905,162,0.0,0.0
+no_rag:refusal-05-budget,no_rag,refusal-05-budget,refusal,easy,档案未提供，无法确定 Ember 项目的预算。,True,782,141,0.0,0.0
+no_rag:refusal-05-vendor,no_rag,refusal-05-vendor,refusal,medium,档案未提供，无法确定。,True,1109,190,0.0,0.0
+no_rag:refusal-06-budget,no_rag,refusal-06-budget,refusal,hard,档案未提供，无法确定。,True,1091,197,0.0,0.0
+no_rag:refusal-06-vendor,no_rag,refusal-06-vendor,refusal,easy,档案未提供，无法确定。,True,1433,159,0.0,0.0
+no_rag:refusal-07-budget,no_rag,refusal-07-budget,refusal,medium,档案未提供，无法确定 Grove 项目的预算。,True,769,152,0.0,0.0
+no_rag:refusal-07-vendor,no_rag,refusal-07-vendor,refusal,hard,档案未提供，无法确定。,True,873,151,0.0,0.0
+no_rag:refusal-08-budget,no_rag,refusal-08-budget,refusal,easy,档案未提供，无法确定。,True,1087,179,0.0,0.0
+no_rag:refusal-08-vendor,no_rag,refusal-08-vendor,refusal,medium,档案未提供，无法确定。,True,1316,260,0.0,0.0
+no_rag:refusal-09-budget,no_rag,refusal-09-budget,refusal,hard,档案未提供，无法确定。,True,1178,142,0.0,0.0
+no_rag:refusal-10-budget,no_rag,refusal-10-budget,refusal,easy,档案未提供，无法确定 Juniper 项目的预算。,True,928,169,0.0,0.0
+no_rag:refusal-11-budget,no_rag,refusal-11-budget,refusal,medium,档案未提供，无法确定。,True,899,156,0.0,0.0
+no_rag:refusal-12-budget,no_rag,refusal-12-budget,refusal,hard,档案未提供，无法确定。,True,834,172,0.0,0.0
+no_rag:table-01-accuracy,no_rag,table-01-accuracy,table,medium,档案未提供，无法确定。,False,937,182,0.0,0.0
+no_rag:table-01-latency,no_rag,table-01-latency,table,easy,档案未提供，无法确定。,False,1144,190,0.0,0.0
+no_rag:table-02-accuracy,no_rag,table-02-accuracy,table,medium,档案未提供，无法确定。,False,1120,167,0.0,0.0
+no_rag:table-02-latency,no_rag,table-02-latency,table,easy,档案未提供，无法确定。,False,1178,165,0.0,0.0
+no_rag:table-03-accuracy,no_rag,table-03-accuracy,table,medium,档案未提供，无法确定。,False,889,154,0.0,0.0
+no_rag:table-03-latency,no_rag,table-03-latency,table,easy,档案未提供，无法确定。,False,1385,166,0.0,0.0
+no_rag:table-04-accuracy,no_rag,table-04-accuracy,table,medium,档案未提供，无法确定。,False,1076,170,0.0,0.0
+no_rag:table-04-latency,no_rag,table-04-latency,table,easy,档案未提供，无法确定。,False,955,171,0.0,0.0
+no_rag:table-05-accuracy,no_rag,table-05-accuracy,table,easy,档案未提供，无法确定。,False,1078,200,0.0,0.0
+no_rag:table-05-latency,no_rag,table-05-latency,table,hard,档案未提供，无法确定。,False,928,168,0.0,0.0
+no_rag:table-06-accuracy,no_rag,table-06-accuracy,table,hard,档案未提供，无法确定。,False,1271,225,0.0,0.0
+no_rag:table-06-latency,no_rag,table-06-latency,table,medium,档案未提供，无法确定。,False,921,153,0.0,0.0
+no_rag:table-07-accuracy,no_rag,table-07-accuracy,table,medium,S-75 没有统一固定的“准确率”，具体命中概率取决于型号、目标、电子干扰和作战环境。若指某项目档案中的指标，档案未提供，无法确定。,False,2675,443,0.0,0.0
+no_rag:table-07-latency,no_rag,table-07-latency,table,easy,档案未提供，无法确定。,False,778,130,0.0,0.0
+no_rag:table-08-accuracy,no_rag,table-08-accuracy,table,easy,档案未提供，无法确定。,False,1029,151,0.0,0.0
+no_rag:table-08-latency,no_rag,table-08-latency,table,hard,档案未提供，无法确定。,False,672,158,0.0,0.0
+no_rag:table-09-latency,no_rag,table-09-latency,table,medium,档案未提供，无法确定。,False,876,160,0.0,0.0
+no_rag:table-10-latency,no_rag,table-10-latency,table,hard,档案未提供，无法确定。,False,1156,178,0.0,0.0
+no_rag:table-11-latency,no_rag,table-11-latency,table,easy,档案未提供，无法确定。,False,959,185,0.0,0.0
+no_rag:table-12-latency,no_rag,table-12-latency,table,medium,档案未提供，无法确定。,False,1152,170,0.0,0.0
+no_rag:text-01-city,no_rag,text-01-city,text,hard,档案未提供，无法确定。,False,887,155,0.0,0.0
+no_rag:text-01-owner,no_rag,text-01-owner,text,easy,档案未提供，无法确定。,False,1267,150,0.0,0.0
+no_rag:text-01-release,no_rag,text-01-release,text,medium,档案未提供，无法确定。,False,1188,161,0.0,0.0
+no_rag:text-02-owner,no_rag,text-02-owner,text,medium,档案未提供，无法确定。,False,782,155,0.0,0.0
+no_rag:text-02-release,no_rag,text-02-release,text,hard,档案未提供，无法确定。,False,1031,150,0.0,0.0
+no_rag:text-03-owner,no_rag,text-03-owner,text,medium,档案未提供，无法确定。,False,969,177,0.0,0.0
+no_rag:text-03-release,no_rag,text-03-release,text,hard,档案未提供，无法确定。,False,1333,157,0.0,0.0
+no_rag:text-04-owner,no_rag,text-04-owner,text,medium,档案未提供，无法确定。,False,1071,223,0.0,0.0
+no_rag:text-04-release,no_rag,text-04-release,text,hard,档案未提供，无法确定。,False,649,160,0.0,0.0
+no_rag:text-05-owner,no_rag,text-05-owner,text,easy,档案未提供，无法确定。,False,2119,355,0.0,0.0
+no_rag:text-05-release,no_rag,text-05-release,text,medium,档案未提供，无法确定。,False,1040,163,0.0,0.0
+no_rag:text-06-owner,no_rag,text-06-owner,text,hard,档案未提供，无法确定。,False,1020,190,0.0,0.0
+no_rag:text-06-release,no_rag,text-06-release,text,easy,档案未提供，无法确定。,False,939,154,0.0,0.0
+no_rag:text-07-owner,no_rag,text-07-owner,text,medium,档案未提供，无法确定。,False,780,166,0.0,0.0
+no_rag:text-07-release,no_rag,text-07-release,text,hard,档案未提供，无法确定。,False,806,175,0.0,0.0
+no_rag:text-08-owner,no_rag,text-08-owner,text,easy,档案未提供，无法确定。,False,1877,373,0.0,0.0
+no_rag:text-08-release,no_rag,text-08-release,text,medium,档案未提供，无法确定。,False,1265,205,0.0,0.0
+no_rag:text-09-owner,no_rag,text-09-owner,text,hard,档案未提供，无法确定。,False,819,143,0.0,0.0
+no_rag:text-09-release,no_rag,text-09-release,text,easy,档案未提供，无法确定。,False,686,166,0.0,0.0
+no_rag:text-10-owner,no_rag,text-10-owner,text,easy,档案未提供，无法确定。,False,1115,165,0.0,0.0
+no_rag:text-10-release,no_rag,text-10-release,text,medium,档案未提供，无法确定。,False,769,162,0.0,0.0
+no_rag:text-11-owner,no_rag,text-11-owner,text,medium,档案未提供，无法确定。,False,1188,191,0.0,0.0
+no_rag:text-11-release,no_rag,text-11-release,text,hard,档案未提供，无法确定。,False,1295,178,0.0,0.0
+no_rag:text-12-owner,no_rag,text-12-owner,text,hard,档案未提供，无法确定。,False,1547,283,0.0,0.0
+no_rag:text-12-release,no_rag,text-12-release,text,easy,档案未提供，无法确定。,False,1261,218,0.0,0.0
