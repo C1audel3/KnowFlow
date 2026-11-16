@@ -28,8 +28,8 @@ from app.accuracy import (
 from app.core.config import PROJECT_ROOT
 
 DEFAULT_DATASET = PROJECT_ROOT / "data" / "evaluation" / "accuracy_experiment.jsonl"
-DEFAULT_RAG_RESULTS = PROJECT_ROOT / "report" / "artifacts" / "phase5_results.json"
-DEFAULT_OUTPUT = PROJECT_ROOT / "report" / "artifacts" / "accuracy_experiment.json"
+DEFAULT_RAG_RESULTS = PROJECT_ROOT / "data" / "experiments" / "phase5_results.json"
+DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "experiments" / "accuracy_experiment.json"
 PLACEHOLDER_KEYS = {"", "replace-with-your-api-key", "your_api_key"}
 BASELINE_SYSTEM_PROMPT = (
     "你正在参加一个闭卷事实问答实验。你没有外部知识库或用户文档。"

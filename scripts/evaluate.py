@@ -18,7 +18,7 @@ from app.evaluation import load_dataset, run_evaluation, summarize_results
 from ui.client import APIClient
 
 DEFAULT_DATASET = PROJECT_ROOT / "data" / "evaluation" / "phase5_questions.jsonl"
-DEFAULT_OUTPUT = PROJECT_ROOT / "report" / "artifacts" / "phase5_results.json"
+DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "experiments" / "phase5_results.json"
 
 
 def parse_args() -> argparse.Namespace:

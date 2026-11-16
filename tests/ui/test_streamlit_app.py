@@ -13,5 +13,5 @@ def test_streamlit_page_survives_offline_backend(monkeypatch):
     app = AppTest.from_file(str(app_path)).run(timeout=10)
 
     assert not app.exception
-    assert app.title[0].value == "KnowFlow 多模态知识库"
+    assert app.title[0].value == "KnowFlow 论文阅读助手"
     assert any("无法连接后端服务" in item.value for item in app.sidebar.error)

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "description": "Official conference PDFs; files fetched locally and not redistributed in this repository.",
+  "papers": [
+    {
+      "key": "rag2020",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "source_url": "https://proceedings.neurips.cc/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+      "publication": "NeurIPS 2020 proceedings version",
+      "sha256": "720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b",
+      "pages": 16
+    },
+    {
+      "key": "dpr2020",
+      "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+      "source_url": "https://aclanthology.org/2020.emnlp-main.550.pdf",
+      "publication": "EMNLP 2020, pages 6769-6781",
+      "sha256": "2abfc7991519be2b8ce30215905516fdb593218b7bf59e50ece0d8a088a7c4d5",
+      "pages": 13
+    },
+    {
+      "key": "fid2021",
+      "title": "Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering",
+      "source_url": "https://aclanthology.org/2021.eacl-main.74.pdf",
+      "publication": "EACL 2021, pages 874-880",
+      "sha256": "a0b8708f35c78bc5799322a91e042f33233a5e48226c400843082c8a76b01175",
+      "pages": 7
+    }
+  ]
+}

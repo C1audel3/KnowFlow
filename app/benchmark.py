@@ -29,7 +29,9 @@ class EvidenceBlock:
 class BM25Retriever:
     """Small dependency-free BM25 implementation for a reproducible baseline."""
 
-    def __init__(self, blocks: Sequence[EvidenceBlock], k1: float = 1.5, b: float = 0.75):
+    def __init__(
+        self, blocks: Sequence[EvidenceBlock], k1: float = 1.5, b: float = 0.75
+    ):
         if not blocks:
             raise ValueError("blocks cannot be empty")
         self.blocks = list(blocks)
@@ -60,7 +62,9 @@ class BM25Retriever:
                 denominator = frequency + self.k1 * (
                     1 - self.b + self.b * length / self.average_length
                 )
-                score += self.idf.get(token, 0.0) * frequency * (self.k1 + 1) / denominator
+                score += (
+                    self.idf.get(token, 0.0) * frequency * (self.k1 + 1) / denominator
+                )
             ranked.append((block.id, score))
         ranked.sort(key=lambda item: (-item[1], item[0]))
         return ranked[:top_k]
@@ -76,7 +80,9 @@ def reciprocal_rank_fusion(
     return sorted(scores.items(), key=lambda item: (-item[1], item[0]))[:top_k]
 
 
-def retrieval_metrics(retrieved: Sequence[str], relevant: Iterable[str], k: int = 5) -> dict[str, float]:
+def retrieval_metrics(
+    retrieved: Sequence[str], relevant: Iterable[str], k: int = 5
+) -> dict[str, float]:
     relevant_set = set(relevant)
     if not relevant_set:
         raise ValueError("relevant evidence cannot be empty")
@@ -100,13 +106,14 @@ def aggregate_metrics(rows: Sequence[dict[str, float]]) -> dict[str, float]:
     if not rows:
         raise ValueError("metric rows cannot be empty")
     return {
-        key: round(statistics.fmean(row[key] for row in rows), 6)
-        for key in rows[0]
+        key: round(statistics.fmean(row[key] for row in rows), 6) for key in rows[0]
     }
 
 
 def extract_evidence_ids(text: str) -> list[str]:
-    return list(dict.fromkeys(match.lower() for match in EVIDENCE_PATTERN.findall(text)))
+    return list(
+        dict.fromkeys(match.lower() for match in EVIDENCE_PATTERN.findall(text))
+    )
 
 
 def citation_metrics(answer: str, relevant: Iterable[str]) -> dict[str, float]:

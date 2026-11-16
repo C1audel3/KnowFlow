@@ -1,0 +1,8 @@
+{"id":"paper-purpose","question":"What is the goal of this demonstration paper?","type":"text","expected_any":["证据","evidence"],"forbidden_keywords":[]}
+{"id":"paper-figure","question":"Explain the four stages in Figure 1, including what the third stage receives.","type":"image","expected_any":["图片","图像","图文","image","figure"],"forbidden_keywords":[]}
+{"id":"paper-table","question":"According to Table 1, what are the two fictional accuracy values?","type":"table","expected_keywords":["70","85"],"forbidden_keywords":[]}
+{"id":"paper-table-comparison","question":"According to Table 1 and its surrounding text, are the systems evaluated on the same questions?","type":"table","expected_any":["相同","同一","same"],"forbidden_keywords":[]}
+{"id":"paper-equation","question":"What are the two terms in Equation 1 and what does lambda control?","type":"equation","expected_any":["平衡","权重","balance","weight"],"forbidden_keywords":[]}
+{"id":"paper-limitations","question":"What are the limitations stated by the paper?","type":"text","expected_any":["真实","合成","synthetic","real"],"forbidden_keywords":[]}
+{"id":"paper-results","question":"Does the paper report measured model performance, or fabricated demonstration numbers?","type":"text","expected_any":["虚构","编造","演示","fabricated","fictional"],"forbidden_keywords":[]}
+{"id":"paper-unknown-figure","question":"Please explain Figure 99.","type":"refusal","expected_any":["未","没有","无法"],"forbidden_keywords":[]}

@@ -22,6 +22,7 @@ from app.schemas import (
     QueryResponse,
 )
 from app.services import KnowledgeBaseService
+from app.paper_routes import router as paper_router
 
 logger = logging.getLogger(__name__)
 
@@ -60,8 +61,8 @@ def create_app(
             await service.close()
 
     app = FastAPI(
-        title="KnowFlow Multimodal RAG API",
-        version="0.3.0",
+        title="KnowFlow Paper Reading API",
+        version="0.4.0",
         lifespan=lifespan,
     )
 
@@ -113,6 +114,7 @@ def create_app(
         service: KnowledgeBaseService = request.app.state.service
         return await service.query(payload)
 
+    app.include_router(paper_router)
     return app
 
 

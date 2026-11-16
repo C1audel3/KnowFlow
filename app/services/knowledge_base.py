@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import codecs
 import logging
+import sqlite3
 import time
 from collections import Counter
 from collections.abc import Callable
@@ -32,6 +33,9 @@ from app.schemas.models import (
     TaskStatus,
 )
 from examples.simple_multimodal_rag import build_rag
+from app.schemas.papers import PaperReadingRequest, PaperReadingResponse
+from app.services.paper_library import PaperLibrary
+from app.services.paper_reading import index_paper, read_paper
 
 logger = logging.getLogger(__name__)
 UPLOAD_CHUNK_SIZE = 1024 * 1024
@@ -50,6 +54,7 @@ class _DocumentTask:
     completed_at: datetime | None = None
     duration_ms: int | None = None
     error: str | None = None
+    is_paper: bool = False
 
     def public(self) -> DocumentTaskResponse:
         return DocumentTaskResponse.model_validate(self)
@@ -95,11 +100,17 @@ class KnowledgeBaseService:
         self._worker_by_task: dict[str, asyncio.Task[None]] = {}
         self._ingest_lock = asyncio.Semaphore(1)
         self._query_lock = asyncio.Semaphore(settings.max_query_concurrency)
+        self.papers: PaperLibrary | None = None
 
     async def initialize(self) -> None:
         self.settings.upload_dir.mkdir(parents=True, exist_ok=True)
         self.settings.output_dir.mkdir(parents=True, exist_ok=True)
         self.settings.working_dir.mkdir(parents=True, exist_ok=True)
+        self.papers = PaperLibrary(
+            self.settings.working_dir,
+            self.settings.upload_dir,
+            self.settings.output_dir,
+        )
         self.rag = self._rag_factory(self.settings.working_dir)
         self.initialized = True
 
@@ -116,12 +127,17 @@ class KnowledgeBaseService:
             raise RAGNotReadyError()
         return self.rag
 
-    async def submit_document(self, upload: UploadFile) -> DocumentTaskResponse:
+    async def submit_document(
+        self, upload: UploadFile, *, is_paper: bool = False
+    ) -> DocumentTaskResponse:
         self._require_ready()
         display_name = Path(upload.filename or "").name
         if not display_name or display_name in {".", ".."}:
             raise InvalidFileError("文件名无效")
         extension = Path(display_name).suffix.lower()
+        if is_paper and extension not in {".pdf", ".md"}:
+            await upload.close()
+            raise InvalidFileTypeError()
         if extension not in self.settings.supported_extensions:
             raise InvalidFileTypeError()
 
@@ -177,6 +193,7 @@ class KnowledgeBaseService:
             file_name=display_name,
             stored_path=stored_path,
             created_at=_utc_now(),
+            is_paper=is_paper,
         )
         self._tasks[task_id] = record
         worker = asyncio.create_task(self._process_document(record))
@@ -206,13 +223,14 @@ class KnowledgeBaseService:
                         "backend": self.settings.parser_backend,
                         "timeout": self.settings.parser_timeout,
                     }
-                await rag.process_document_complete(
-                    file_path=str(record.stored_path),
-                    output_dir=str(self.settings.output_dir),
-                    parse_method="auto",
-                    display_stats=False,
-                    **options,
-                )
+                if not record.is_paper:
+                    await rag.process_document_complete(
+                        file_path=str(record.stored_path),
+                        output_dir=str(self.settings.output_dir),
+                        parse_method="auto",
+                        display_stats=False,
+                        **options,
+                    )
                 content, document_id = await rag.parse_document(
                     file_path=str(record.stored_path),
                     output_dir=str(self.settings.output_dir),
@@ -220,6 +238,16 @@ class KnowledgeBaseService:
                     display_stats=False,
                     **options,
                 )
+                if record.is_paper:
+                    assert self.papers is not None
+                    await index_paper(
+                        self.papers,
+                        rag,
+                        document_id,
+                        record.file_name,
+                        record.stored_path,
+                        content,
+                    )
             record.document_id = document_id
             record.content_blocks = len(content)
             record.content_types = _content_types(content)
@@ -254,6 +282,18 @@ class KnowledgeBaseService:
         if worker is not None:
             await asyncio.shield(worker)
         return self.get_document(task_id)
+
+    async def read_paper(self, request: PaperReadingRequest) -> PaperReadingResponse:
+        rag = self._require_ready()
+        assert self.papers is not None
+        async with self._query_lock:
+            response = await read_paper(self.papers, rag, request)
+            try:
+                response.history_id = self.papers.save_reading(request, response)
+            except sqlite3.Error:
+                logger.warning("Paper reading history could not be saved")
+                response.warnings.append("本次阅读记录未能保存，建议导出回答留存。")
+            return response
 
     async def query(self, request: QueryRequest) -> QueryResponse:
         rag = self._require_ready()

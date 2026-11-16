@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "date": "2026-11-12",
+  "purpose": "Development-only diagnostic questions; source figures overlap previous development/test papers and are not an independent held-out test.",
+  "inference_status": "completed_one_round_12_of_12_requests_successful",
+  "image_dependency": "assistant_audited_returned_text_contexts_three_partial_three_insufficient_for_full_answer_pending_independent_review",
+  "annotation_status": "assistant_checked_original_crops_pending_independent_human_review",
+  "automatic_rules": "Smoke checks only; keyword rules do not score arithmetic, order, direction or approximate numeric tolerances.",
+  "cases": [
+    {
+      "case_id": "dpr2020-visual-k20",
+      "judgment_notes": "结合图例和 k=20 的纵坐标读取；自动关键词不能判断大小关系是否写反。"
+    },
+    {
+      "case_id": "dpr2020-visual-ranking",
+      "judgment_notes": "读图例、右端排序与纵坐标差；不把只出现曲线名视为语义正确。"
+    },
+    {
+      "case_id": "fid2021-visual-gain",
+      "judgment_notes": "需要读取非均匀横轴上的端点并作差；数值为读图近似值，人工可接受合理范围。"
+    },
+    {
+      "case_id": "fid2021-visual-ticks",
+      "judgment_notes": "检查坐标轴阅读；不要从相近的显示间距推断数值等距。"
+    },
+    {
+      "case_id": "rag2020-visual-turn",
+      "judgment_notes": "需要结合线型图例和峰值位置；峰值与后续趋势应人工检查。"
+    },
+    {
+      "case_id": "rag2020-visual-gap",
+      "judgment_notes": "需对应图例读取右端点；禁止把EM绝对差误写为相对增长百分比。"
+    }
+  ],
+  "experiment_summary": "data/experiments/paper_visual_dev_summary.json",
+  "diagnostic_audit": "data/experiments/paper_visual_diagnostic_audit.json"
+}

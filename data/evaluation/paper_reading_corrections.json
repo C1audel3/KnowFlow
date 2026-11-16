@@ -1,0 +1,34 @@
+[
+  {
+    "case_id": "dpr2020-hard-negative-table",
+    "reason": "Reference value was mistranscribed and the question does not disambiguate the two Gold+BM25(1) configurations. Question, split, generation settings and answers are unchanged.",
+    "source_url": "https://aclanthology.org/2020.emnlp-main.550.pdf",
+    "pdf_page": 6,
+    "table": 3,
+    "before": {
+      "reference_answer": "78.1 和 77.3。",
+      "answer_groups": [
+        [
+          "78.1"
+        ],
+        [
+          "77.3"
+        ]
+      ],
+      "review_status": "source_checked_assistant_pending_human_review"
+    },
+    "after": {
+      "reference_answer": "Gold（127个批内负例）的Top-20为73.0。Gold+BM25(1)有两行：31+32负例时77.3，127+128负例时78.0；问题未指定后者配置，应明确区分。",
+      "answer_groups": [
+        [
+          "73.0"
+        ],
+        [
+          "77.3",
+          "78.0"
+        ]
+      ],
+      "review_status": "source_rechecked_assistant_pending_human_review"
+    }
+  }
+]

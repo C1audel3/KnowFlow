@@ -21,6 +21,10 @@ build/
 site/
 
 # Logs / Reports
+/report/
+/data/experiments/
+/data/evaluation/paper_visual_diagnostic_notes.json
+/assets/knowflow_ui.png
 *.log
 *.log.*
 *.logfire
@@ -48,6 +52,8 @@ neo4jWorkDir/
 # Data & Storage
 inputs/
 data/uploads/
+data/benchmarks/papers/downloads/
+data/experiments/paper_benchmark_raw/
 rag_storage*/
 examples/input/
 examples/output/

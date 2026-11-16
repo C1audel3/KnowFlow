@@ -89,7 +89,7 @@ all = [
 
 [project.urls]
 Homepage = "https://github.com/C1audel3/KnowFlow"
-Documentation = "https://github.com/C1audel3/KnowFlow/tree/main/report"
+Documentation = "https://github.com/C1audel3/KnowFlow#readme"
 Repository = "https://github.com/C1audel3/KnowFlow"
 Issues = "https://github.com/C1audel3/KnowFlow/issues"
 Upstream = "https://github.com/HKUDS/RAG-Anything"

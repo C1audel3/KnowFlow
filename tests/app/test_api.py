@@ -40,6 +40,14 @@ def test_health_public_config_and_openapi_are_available(app_settings):
         "/documents",
         "/documents/{task_id}",
         "/query",
+        "/papers",
+        "/papers/read",
+        "/papers/{paper_id}",
+        "/papers/{paper_id}/content",
+        "/papers/{paper_id}/assets/{evidence_id}",
+        "/papers/{paper_id}/original",
+        "/papers/{paper_id}/readings",
+        "/papers/{paper_id}/readings/{history_id}",
     }
     assert rag.finalize_calls == 1
 

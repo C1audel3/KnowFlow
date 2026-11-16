@@ -12,6 +12,14 @@ from urllib.parse import urlsplit, urlunsplit
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
+from app.schemas.papers import (
+    Paper,
+    PaperEvidence,
+    PaperReadingRequest,
+    PaperReadingResponse,
+    PaperReadingHistory,
+    PaperReadingHistoryItem,
+)
 
 DEFAULT_EXTENSIONS = (".pdf", ".md", ".png", ".jpg", ".jpeg")
 TERMINAL_TASK_STATES = {"completed", "failed"}
@@ -253,3 +261,70 @@ class APIClient:
             },
         )
         return self._validated_json(response, QueryView)  # type: ignore[return-value]
+
+    def upload_paper(
+        self, file_name: str, content: bytes, content_type: str
+    ) -> DocumentTaskView:
+        response = self._request(
+            "POST",
+            "/papers",
+            files={"file": (Path(file_name).name, content, content_type)},
+        )
+        return self._validated_json(response, DocumentTaskView)  # type: ignore[return-value]
+
+    def papers(self) -> list[Paper]:
+        payload = self._request("GET", "/papers")
+        try:
+            items = payload.json()
+            if not isinstance(items, list):
+                raise ValueError("expected a list")
+            return [Paper.model_validate(item) for item in items]
+        except ValueError as exc:
+            raise UIError("论文库数据格式无效", "INVALID_RESPONSE") from exc
+
+    def paper_content(self, paper_id: str, offset: int = 0) -> list[PaperEvidence]:
+        payload = self._request(
+            "GET",
+            f"/papers/{paper_id}/content",
+            params={"offset": offset, "limit": 20},
+        )
+        try:
+            items = payload.json()
+            if not isinstance(items, list):
+                raise ValueError("expected a list")
+            return [PaperEvidence.model_validate(item) for item in items]
+        except ValueError as exc:
+            raise UIError("论文内容格式无效", "INVALID_RESPONSE") from exc
+
+    def paper_read(self, request: PaperReadingRequest) -> PaperReadingResponse:
+        response = self._request("POST", "/papers/read", json=request.model_dump())
+        return self._validated_json(response, PaperReadingResponse)  # type: ignore[return-value]
+
+    def paper_readings(
+        self, paper_id: str, offset: int = 0
+    ) -> list[PaperReadingHistoryItem]:
+        response = self._request(
+            "GET",
+            f"/papers/{paper_id}/readings",
+            params={"offset": offset, "limit": 20},
+        )
+        try:
+            items = response.json()
+            if not isinstance(items, list):
+                raise ValueError("expected a list")
+            return [PaperReadingHistoryItem.model_validate(item) for item in items]
+        except ValueError as exc:
+            raise UIError("阅读历史格式无效", "INVALID_RESPONSE") from exc
+
+    def paper_reading(self, paper_id: str, history_id: str) -> PaperReadingHistory:
+        response = self._request("GET", f"/papers/{paper_id}/readings/{history_id}")
+        return self._validated_json(response, PaperReadingHistory)  # type: ignore[return-value]
+
+    def paper_asset(self, evidence: PaperEvidence) -> bytes:
+        return self._request(
+            "GET",
+            f"/papers/{evidence.paper_id}/assets/{evidence.evidence_id}",
+        ).content
+
+    def paper_original(self, paper_id: str) -> bytes:
+        return self._request("GET", f"/papers/{paper_id}/original").content
